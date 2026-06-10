@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PolicíaGuía — Procedimientos y Marco Legal</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/jpeg" href="assets/logo-tonala.jpg" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand">
+        <img src="assets/logo-tonala.jpg" alt="Policía Municipal Tonalá" class="brand-logo" />
+        <span class="brand-text">Policía<strong>Guía</strong></span>
+      </a>
+      <nav class="main-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#guia">Guía Interactiva</a>
+        <a href="#biblioteca">Biblioteca Legal</a>
+        <a href="#acerca">Acerca</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="badge">Procedimientos Policiales · IPH</span>
+          <h1>Guía digital de actuación <span class="accent">paso a paso</span></h1>
+          <p class="lead">
+            Consulta protocolos de actuación policial, derechos del detenido,
+            flagrancia y todo el marco legal en un solo lugar. Pensado para el
+            primer respondiente.
+          </p>
+          <div class="hero-actions">
+            <a href="#guia" class="btn btn-primary">Iniciar guía interactiva</a>
+            <a href="#biblioteca" class="btn btn-ghost">Ver biblioteca legal</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>25</strong><span>Documentos legales</span></div>
+            <div><strong>63</strong><span>Pasos del protocolo</span></div>
+            <div><strong>100%</strong><span>Offline / sin registro</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-badge">
+            <img src="assets/logo-tonala.jpg" alt="Escudo Policía Municipal Tonalá" />
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-head">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="hero-card-title">protocolo.iph</span>
+            </div>
+            <div class="hero-card-body">
+              <div class="step">
+                <svg viewBox="0 0 24 24" class="step-icon"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                <span>Conocimiento de hecho delictivo</span>
+              </div>
+              <div class="step active">
+                <svg viewBox="0 0 24 24" class="step-icon"><path d="M5 12l5 5L20 7" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+                <span>Confirmación de noticia criminal</span>
+              </div>
+              <div class="step">
+                <svg viewBox="0 0 24 24" class="step-icon"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v6l3 2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                <span>Evaluación de flagrancia</span>
+              </div>
+              <div class="step">
+                <svg viewBox="0 0 24 24" class="step-icon"><path d="M4 6h16M4 12h16M4 18h10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                <span>Llenado del IPH</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIA INTERACTIVA -->
+  <section id="guia" class="section">
+    <div class="container">
+      <header class="section-head">
+        <h2>Guía interactiva de actuación</h2>
+        <p>Responde y avanza por el árbol de decisiones del Informe Policial Homologado.</p>
+      </header>
+
+      <div class="guide-wrap">
+        <aside class="guide-side">
+          <div class="breadcrumb-card">
+            <h3>Tu recorrido</h3>
+            <ol id="breadcrumbs" class="breadcrumbs"></ol>
+            <button id="btn-restart" class="btn btn-ghost btn-sm">Reiniciar</button>
+            <button id="btn-back" class="btn btn-ghost btn-sm">← Volver</button>
+          </div>
+        </aside>
+
+        <div class="guide-main">
+          <div id="guide-node" class="guide-node">
+            <!-- nodo renderizado por JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIBLIOTECA -->
+  <section id="biblioteca" class="section section-alt">
+    <div class="container">
+      <header class="section-head">
+        <h2>Biblioteca legal</h2>
+        <p>Marco normativo, protocolos y guías de referencia rápida.</p>
+        <input id="search-pdfs" type="search" placeholder="Buscar documento..." class="search-input" />
+      </header>
+
+      <div id="pdf-grid" class="pdf-grid">
+        <!-- tarjetas renderizadas por JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ACERCA -->
+  <section id="acerca" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <h2>Acerca de PolicíaGuía</h2>
+          <p>
+            Plataforma de consulta para personal de seguridad pública. Reúne los
+            procedimientos del primer respondiente, el marco normativo aplicable
+            y los formatos del Informe Policial Homologado en una sola interfaz.
+          </p>
+          <p>
+            Este sitio es una versión web de la guía operativa: navega por
+            decisiones, consulta artículos del CNPP, derechos del detenido y los
+            protocolos de uso de la fuerza.
+          </p>
+        </div>
+        <div class="about-cards">
+          <div class="mini-card">
+            <svg viewBox="0 0 24 24" class="mini-icon"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <h4>Protocolos</h4><p>Pasos de actuación validados.</p>
+          </div>
+          <div class="mini-card">
+            <svg viewBox="0 0 24 24" class="mini-icon"><path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4V4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 16a4 4 0 014-4h12" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <h4>Marco legal</h4><p>CNPP, derechos humanos, flagrancia.</p>
+          </div>
+          <div class="mini-card">
+            <svg viewBox="0 0 24 24" class="mini-icon"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <h4>Sin registro</h4><p>Funciona offline, sin cuenta.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <img src="assets/logo-tonala.jpg" alt="" class="brand-logo" />
+        <span>Policía<strong>Guía</strong></span>
+      </div>
+      <small>© <span id="year"></span> PolicíaGuía · Herramienta de consulta para personal de seguridad pública.</small>
+    </div>
+  </footer>
+
+  <!-- MODAL VISOR PDF -->
+  <div id="pdf-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <header class="modal-head">
+        <h3 id="modal-title">Documento</h3>
+        <div class="modal-actions">
+          <a id="modal-open" href="#" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Abrir en pestaña</a>
+          <button class="btn btn-ghost btn-sm" data-close>Cerrar ✕</button>
+        </div>
+      </header>
+      <iframe id="modal-frame" title="Visor de documento"></iframe>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
