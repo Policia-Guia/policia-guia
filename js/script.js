@@ -391,6 +391,34 @@
   btnBack.addEventListener('click', back);
   search.addEventListener('input', e => filterPdfs(e.target.value));
 
+  // Menú hamburguesa (móvil)
+  const navToggle = document.getElementById('nav-toggle');
+  const mainNav = document.getElementById('main-nav');
+  if (navToggle && mainNav) {
+    const closeNav = () => {
+      mainNav.classList.remove('is-open');
+      navToggle.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-open');
+    };
+    navToggle.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('is-open');
+      navToggle.classList.toggle('is-open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('nav-open', open);
+    });
+    // Cerrar al hacer click en un enlace
+    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+    // Cerrar al cambiar a desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) closeNav();
+    });
+    // Cerrar con ESC
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mainNav.classList.contains('is-open')) closeNav();
+    });
+  }
+
   // Año en footer
   document.getElementById('year').textContent = new Date().getFullYear();
 
