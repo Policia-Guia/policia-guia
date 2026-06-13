@@ -27,6 +27,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   background: radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,0.15), transparent 60%),
               radial-gradient(900px 500px at -10% 20%, rgba(34,211,238,0.10), transparent 60%),
               var(--bg);
@@ -35,6 +36,10 @@ html, body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
+html.nav-open, html.nav-open body { overflow: hidden; }
+
+/* Overlay nav (oculto por defecto, se activa en mobile) */
+.nav-overlay { display: none; }
 
 img { display: block; max-width: 100%; }
 a { color: var(--accent); text-decoration: none; }
@@ -86,6 +91,35 @@ a:hover { color: #67e8f9; }
   transition: color 0.2s;
 }
 .main-nav a:hover { color: var(--text); }
+
+/* Botón hamburguesa (oculto en desktop, se muestra en mobile) */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  z-index: 90;
+  position: relative;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* ============ HERO ============ */
 .hero {
@@ -741,5 +775,212 @@ a:hover { color: #67e8f9; }
   flex: 1;
   border: 0;
   background: #1a1a1a;
+}
+
+/* ============================================================
+   RESPONSIVE
+   - Desktop  (>1100px): layout completo en 2 columnas
+   - Tablet   (700-1100px): layout en 1 columna
+   - Móvil    (≤900px): hamburguesa
+   - Móvil    (≤700px): texto/espaciado compactado
+   - Móvil XS (≤400px): ajustes adicionales
+   ============================================================ */
+
+/* ---------- TABLET y abajo (≤1100px): 1 columna hero ---------- */
+@media (max-width: 1100px) {
+  .container { width: 94%; }
+  .hero { padding: 60px 0 50px; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .hero-text { display: flex; flex-direction: column; align-items: center; }
+  .lead { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .hero-visual { order: -1; }
+  .hero-badge img { width: clamp(180px, 35vw, 260px); }
+
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .guide-wrap { grid-template-columns: 1fr; }
+  .guide-side { position: static; }
+}
+
+/* ---------- MÓVIL/TABLET — Hamburguesa (≤900px) ---------- */
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+
+  /* Overlay como elemento real */
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(2px);
+    z-index: 70;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s, visibility 0.25s;
+  }
+  .nav-overlay.is-open { opacity: 1; visibility: visible; }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: min(300px, 82vw);
+    background: var(--panel);
+    border-left: 1px solid var(--border);
+    flex-direction: column;
+    gap: 0;
+    padding: 70px 0 30px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 80;
+    box-shadow: -20px 0 50px rgba(0,0,0,0.6);
+    overflow-y: auto;
+  }
+  .main-nav.is-open { transform: translateX(0); }
+  .main-nav a {
+    padding: 16px 24px;
+    font-size: 1.02rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-weight: 500;
+  }
+  .main-nav a:active { background: var(--bg-2); }
+}
+
+/* ---------- MÓVIL (≤700px) ---------- */
+@media (max-width: 700px) {
+  .container { width: 92%; }
+
+  /* Hero compactado */
+  .hero { padding: 24px 0 30px; }
+  .hero-grid { gap: 24px; }
+  .hero h1 { font-size: 1.5rem; line-height: 1.15; }
+  .lead { font-size: 0.92rem; margin-bottom: 18px; }
+  .badge { font-size: 0.68rem; padding: 4px 10px; margin-bottom: 12px; }
+  .hero-actions { flex-direction: column; width: 100%; gap: 8px; margin-bottom: 22px; }
+  .hero-actions .btn { width: 100%; justify-content: center; padding: 12px; }
+  .hero-stats { gap: 14px; width: 100%; }
+  .hero-stats div { flex: 1 1 28%; align-items: center; text-align: center; }
+  .hero-stats strong { font-size: 1.25rem; }
+  .hero-stats span { font-size: 0.72rem; }
+  .hero-badge { padding: 6px; }
+  .hero-badge img { width: clamp(110px, 38vw, 160px); }
+  .hero-card-body { padding: 14px; gap: 8px; }
+  .step { padding: 10px 12px; font-size: 0.86rem; }
+  .step-icon { width: 18px; height: 18px; }
+
+  /* Secciones genéricas */
+  .section { padding: 50px 0; }
+  .section-head h2 { font-size: 1.55rem; }
+  .section-head p { font-size: 0.95rem; }
+
+  /* Recursos */
+  .rec-card-head {
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    padding: 16px;
+  }
+  .rec-card-head .rec-card-icon { display: none; }
+  .rec-num { width: 32px; height: 32px; font-size: 0.95rem; }
+  .rec-card-title h3 { font-size: 1.02rem; }
+  .rec-card-title p { font-size: 0.85rem; }
+  .rec-card-body { padding: 16px; }
+  .rec-subgroup h4 { font-size: 0.85rem; }
+  .rec-item-main {
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    padding: 12px;
+    min-height: 56px;
+  }
+  .rec-item-icon { width: 34px; height: 34px; }
+  .rec-item-text strong { font-size: 0.92rem; line-height: 1.3; }
+  .rec-item-note { font-size: 0.74rem; }
+  .rec-sections { gap: 5px; }
+  .rec-chip { font-size: 0.72rem; padding: 4px 9px; }
+  .rec-sections-legend { gap: 10px; font-size: 0.7rem; }
+
+  /* Guía interactiva */
+  .guide-node { padding: 22px 18px; }
+  .guide-node h2 { font-size: 1.2rem; }
+  .guide-node .node-desc { font-size: 0.93rem; }
+  .action-btn {
+    padding: 14px 14px;
+    font-size: 0.93rem;
+    gap: 12px;
+    min-height: 60px;
+  }
+  .action-btn .action-icon { width: 34px; height: 34px; }
+  .action-btn:hover { transform: none; }
+  .breadcrumb-card { padding: 16px; }
+  .breadcrumb-card h3 { font-size: 0.85rem; }
+  .breadcrumbs li { font-size: 0.82rem; padding: 7px 10px; }
+
+  /* Biblioteca */
+  .pdf-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+  }
+  .pdf-card { padding: 14px; gap: 10px; }
+  .pdf-card h4 { font-size: 0.92rem; }
+  .pdf-card p { font-size: 0.78rem; }
+  .pdf-card-foot { font-size: 0.72rem; padding-top: 8px; }
+
+  /* About */
+  .about-grid h2 { font-size: 1.6rem; }
+  .mini-card { padding: 14px; gap: 12px; }
+  .mini-card h4 { font-size: 0.95rem; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; text-align: center; gap: 10px; }
+
+  /* Modal pantalla completa */
+  .modal { padding: 0; }
+  .modal-panel {
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: 0;
+  }
+  .modal-head { padding: 12px 14px; }
+  .modal-head h3 { font-size: 0.92rem; }
+}
+
+/* ---------- MÓVIL XS (≤400px) ---------- */
+@media (max-width: 400px) {
+  .hero h1 { font-size: 1.35rem; }
+  .hero-stats { gap: 10px; }
+  .hero-stats strong { font-size: 1.1rem; }
+  .hero-stats span { font-size: 0.68rem; }
+  .hero-badge img { width: clamp(95px, 32vw, 130px); }
+  .badge { font-size: 0.65rem; }
+  .lead { font-size: 0.88rem; }
+  .pdf-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pdf-card { padding: 12px; }
+  .pdf-card h4 { font-size: 0.85rem; }
+  .pdf-card p { font-size: 0.72rem; }
+  .brand-text { font-size: 0.95rem; }
+  .brand-logo { width: 34px; height: 34px; }
+}
+
+/* ---------- DESKTOP GRANDE (>1400px) ---------- */
+@media (min-width: 1400px) {
+  .container { width: 1280px; }
+  .hero { padding: 100px 0 80px; }
+}
+
+/* ---------- Dispositivos táctiles ---------- */
+@media (hover: none) and (pointer: coarse) {
+  .pdf-card:hover { transform: none; }
+  .rec-item-main:hover { transform: none; }
+  .action-btn:hover { transform: none; }
+  .btn { min-height: 44px; }
+  .nav-toggle { min-width: 44px; min-height: 44px; }
 }
 
