@@ -1,7 +1,6 @@
 /* ============================================================
    PolicíaGuía — Recursos Oficiales
    Estructura tomada del documento "pag wb caro.docx"
-   Cada bloque mezcla enlaces oficiales (gob.mx) con PDFs locales.
    ============================================================ */
 
 window.RECURSOS = [
@@ -15,10 +14,9 @@ window.RECURSOS = [
     icon: 'database',
     items: [
       {
-        title: 'Acceder al sistema RND',
+        title: 'Registro Nacional de Detenciones',
         kind: 'external',
-        href: 'https://detenciones.sspc.gob.mx/',
-        note: 'Llenado obligatorio'
+        href: 'https://detenciones.sspc.gob.mx/'
       }
     ]
   },
@@ -28,17 +26,15 @@ window.RECURSOS = [
     id: 'iph',
     num: 2,
     title: 'IPH — Informe Policial Homologado',
-    desc: 'Formatos oficiales del IPH para hecho probablemente delictivo y para justicia cívica.',
+    desc: 'Formatos oficiales del IPH para hecho probablemente delictivo y para justicia cívica. Descarga el PDF y ábrelo en Adobe Reader para escribir y guardar.',
     icon: 'clipboard',
     subgroups: [
       {
         title: 'IPH — Hecho probablemente delictivo',
         items: [
-          { title: 'Ver / descargar formato oficial', kind: 'external',
-            href: 'https://www.gob.mx/cms/uploads/attachment/file/527373/IPH-DELITOS.pdf',
-            note: 'Descarga el PDF y ábrelo en Adobe Reader para escribir y guardar' },
-          { title: 'IPH (versión local del APK)', kind: 'pdf', file: 'iph.pdf' },
-          { title: 'Presentación visual del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
+          { title: 'Informe Policial Homologado para hecho probablemente delictivo', kind: 'external',
+            href: 'https://www.gob.mx/cms/uploads/attachment/file/527373/IPH-DELITOS.pdf' },
+          { title: 'Presentación del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
         ],
         sections: [
           { label: 'Sección 1', kind: 'obligatoria' },
@@ -59,10 +55,8 @@ window.RECURSOS = [
       {
         title: 'IPH — Justicia Cívica',
         items: [
-          { title: 'Ver / descargar formato oficial', kind: 'external',
-            href: 'https://www.gob.mx/cms/uploads/attachment/file/527371/IPH-JUSTICIA_CIVICA.pdf',
-            note: 'Descarga el PDF y ábrelo en Adobe Reader para escribir y guardar' },
-          { title: 'IPH Justicia Cívica (versión local)', kind: 'pdf', file: 'iphj.pdf' }
+          { title: 'Informe Policial Homologado para justicia cívica', kind: 'external',
+            href: 'https://www.gob.mx/cms/uploads/attachment/file/527371/IPH-JUSTICIA_CIVICA.pdf' }
         ],
         sections: [
           { label: 'Sección 1', kind: 'obligatoria' },
@@ -84,9 +78,8 @@ window.RECURSOS = [
     desc: 'Documento oficial de consulta. Solo lectura.',
     icon: 'book',
     items: [
-      { title: 'Documento oficial (gob.mx)', kind: 'external',
-        href: 'https://www.gob.mx/cms/uploads/attachment/file/334174/PROTOCOLO_NACIONAL_DE_ACTUACION_PRIMER_RESPONDIENTE.pdf' },
-      { title: 'Versión local del APK', kind: 'pdf', file: 'proto.pdf' }
+      { title: 'Protocolo Nacional de Actuación del Primer Respondiente', kind: 'external',
+        href: 'https://www.gob.mx/cms/uploads/attachment/file/334174/PROTOCOLO_NACIONAL_DE_ACTUACION_PRIMER_RESPONDIENTE.pdf' }
     ]
   },
 
@@ -98,9 +91,8 @@ window.RECURSOS = [
     desc: 'Guía oficial para el llenado del Informe Policial Homologado en hecho probablemente delictivo. Solo lectura.',
     icon: 'lightbulb',
     items: [
-      { title: 'Guía oficial (gob.mx)', kind: 'external',
-        href: 'https://www.gob.mx/cms/uploads/attachment/file/394021/Gu_a_IPH_Hecho_Probablemente_Delictivo.pdf' },
-      { title: 'Versión local del APK', kind: 'pdf', file: 'guia.pdf' }
+      { title: 'Guía del IPH para hecho probablemente delictivo', kind: 'external',
+        href: 'https://www.gob.mx/cms/uploads/attachment/file/394021/Gu_a_IPH_Hecho_Probablemente_Delictivo.pdf' }
     ]
   },
 
@@ -113,8 +105,7 @@ window.RECURSOS = [
     icon: 'scale',
     items: [
       { title: 'Constitución Política de los Estados Unidos Mexicanos', kind: 'external',
-        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/CPEUM.pdf',
-        localPdf: 'constitucion.pdf' },
+        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/CPEUM.pdf' },
       { title: 'Ley Orgánica de la Administración Pública Federal', kind: 'external',
         href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LOAPF.pdf' },
       { title: 'Ley Orgánica de la Fiscalía General de la República', kind: 'external',
@@ -122,14 +113,11 @@ window.RECURSOS = [
       { title: 'Ley General de los Derechos de Niñas, Niños y Adolescentes', kind: 'external',
         href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LGDNNA.pdf' },
       { title: 'Ley General del Sistema Nacional de Seguridad Pública', kind: 'external',
-        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNSP.pdf',
-        localPdf: 'LGSNSP.pdf' },
+        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LGSNSP.pdf' },
       { title: 'Ley General de Víctimas', kind: 'external',
-        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LGV.pdf',
-        localPdf: 'victimas.pdf' },
+        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LGV.pdf' },
       { title: 'Ley Nacional del Uso de la Fuerza', kind: 'external',
-        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LNUF.pdf',
-        localPdf: 'politica.pdf' },
+        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LNUF.pdf' },
       { title: 'Ley General para Prevenir, Investigar y Sancionar la Tortura y otros Tratos o Penas Crueles, Inhumanos o Degradantes', kind: 'external',
         href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LGPIST.pdf' },
       { title: 'Ley General de Responsabilidades Administrativas', kind: 'external',
@@ -137,8 +125,7 @@ window.RECURSOS = [
       { title: 'Ley Nacional del Sistema Integral de Justicia Penal para Adolescentes', kind: 'external',
         href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/LNSIJPA.pdf' },
       { title: 'Código Nacional de Procedimientos Penales', kind: 'external',
-        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/CNPP.pdf',
-        localPdf: 'penales.pdf' },
+        href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/CNPP.pdf' },
       { title: 'Código Penal Federal', kind: 'external',
         href: 'https://www.diputados.gob.mx/LeyesBiblio/pdf/CPF.pdf' }
     ]
@@ -153,8 +140,7 @@ window.RECURSOS = [
     icon: 'globe',
     items: [
       { title: 'Declaración Universal de los Derechos Humanos', kind: 'external',
-        href: 'https://www.un.org/es/about-us/universal-declaration-of-human-rights',
-        localPdf: 'dh.pdf' },
+        href: 'https://www.un.org/es/about-us/universal-declaration-of-human-rights' },
       { title: 'Pacto Internacional de Derechos Civiles y Políticos', kind: 'external',
         href: 'https://www.ohchr.org/es/instruments-mechanisms/instruments/international-covenant-civil-and-political-rights' },
       { title: 'Declaración Americana de los Derechos y Deberes del Hombre', kind: 'external',
@@ -164,8 +150,7 @@ window.RECURSOS = [
       { title: 'Convención Americana sobre Derechos Humanos', kind: 'external',
         href: 'https://www.oas.org/dil/esp/tratados_b-32_convencion_americana_sobre_derechos_humanos.htm' },
       { title: 'Código de Conducta para Funcionarios Encargados de Hacer Cumplir la Ley', kind: 'external',
-        href: 'https://www.ohchr.org/es/instruments-mechanisms/instruments/code-conduct-law-enforcement-officials',
-        localPdf: 'conducta.pdf' },
+        href: 'https://www.ohchr.org/es/instruments-mechanisms/instruments/code-conduct-law-enforcement-officials' },
       { title: 'Principios Básicos sobre el Empleo de la Fuerza y Armas de Fuego', kind: 'external',
         href: 'https://www.ohchr.org/es/instruments-mechanisms/instruments/basic-principles-use-force-and-firearms-law' }
     ]
@@ -188,8 +173,7 @@ window.RECURSOS = [
       { title: 'Código Penal del Estado de Jalisco', kind: 'external',
         href: 'https://transparencia.info.jalisco.gob.mx/sites/default/files/Codigo%20Penal%20para%20el%20Estado%20Libre%20y%20Soberano%20de%20Jalisco.pdf' },
       { title: 'Reglamento de Policía y Buen Gobierno del municipio de Tonalá, Jalisco', kind: 'external',
-        href: 'https://tonala.gob.mx/portal/transparencia/marco-juridico/',
-        localPdf: 'reglamento.pdf' }
+        href: 'https://tonala.gob.mx/portal/transparencia/marco-juridico/' }
     ]
   },
 
@@ -206,8 +190,7 @@ window.RECURSOS = [
       { title: 'Protocolo Nacional de Actuación — Policía con Capacidades para Procesar Lugar de la Intervención', kind: 'external',
         href: 'https://www.gob.mx/sspc/documentos/protocolos-nacionales-de-actuacion' },
       { title: 'Guía Nacional de Cadena de Custodia', kind: 'external',
-        href: 'https://www.gob.mx/sspc/documentos/protocolos-nacionales-de-actuacion',
-        localPdf: 'custodia.pdf' }
+        href: 'https://www.gob.mx/sspc/documentos/protocolos-nacionales-de-actuacion' }
     ]
   }
 ];

@@ -9,33 +9,19 @@
 (function () {
   'use strict';
 
-  // ---------- Catálogo de PDFs (corresponde a /pdfs) ----------
+  // ---------- Catálogo de PDFs locales (solo los que NO se duplican con enlaces oficiales) ----------
   const PDFS = [
-    { file: 'constitucion.pdf', title: 'Constitución Política',           desc: 'Constitución Política de los Estados Unidos Mexicanos.', cat: 'Marco Legal' },
-    { file: 'dh.pdf',           title: 'Derechos Humanos',                desc: 'Marco internacional y nacional de derechos humanos.',     cat: 'Derechos' },
-    { file: 'penales.pdf',      title: 'Código Penal',                    desc: 'Tipos penales y sanciones.',                              cat: 'Marco Legal' },
     { file: 'civiles.pdf',      title: 'Materia Civil',                   desc: 'Asuntos civiles relacionados con la actuación policial.', cat: 'Marco Legal' },
     { file: 'rflagrancia.pdf',  title: 'Flagrancia',                      desc: 'Régimen de flagrancia (Art. 146 CNPP).',                  cat: 'Procedimientos' },
     { file: 'sinorden.pdf',     title: 'Detención sin orden',             desc: 'Supuestos de detención sin orden judicial.',              cat: 'Procedimientos' },
     { file: 'ordenes.pdf',      title: 'Órdenes judiciales',              desc: 'Tipos de órdenes de aprehensión y cateo.',                cat: 'Procedimientos' },
-    { file: 'custodia.pdf',     title: 'Cadena de custodia',              desc: 'Manejo y resguardo de evidencias.',                       cat: 'Procedimientos' },
-    { file: 'iph.pdf',          title: 'IPH — Formato',                   desc: 'Informe Policial Homologado.',                            cat: 'IPH' },
-    { file: 'iphj.pdf',         title: 'IPH — Justicia Cívica',           desc: 'Versión de justicia cívica del IPH.',                    cat: 'IPH' },
-    { file: 'IPH_ppt.pdf',      title: 'IPH — Presentación',              desc: 'Guía visual de llenado del IPH.',                         cat: 'IPH' },
-    { file: 'guia.pdf',         title: 'Guía operativa',                  desc: 'Pasos del primer respondiente.',                          cat: 'Procedimientos' },
-    { file: 'proto.pdf',        title: 'Protocolo Nacional',              desc: 'Protocolo nacional de actuación.',                        cat: 'Procedimientos' },
-    { file: 'conducta.pdf',     title: 'Código de Conducta',              desc: 'Conducta del personal de seguridad pública.',             cat: 'Procedimientos' },
     { file: 'sistemaseg.pdf',   title: 'Sistema de Seguridad',            desc: 'Estructura del sistema nacional de seguridad.',           cat: 'Marco Legal' },
-    { file: 'politica.pdf',     title: 'Uso de la Fuerza',                desc: 'Política y principios sobre uso de la fuerza.',           cat: 'Procedimientos' },
     { file: 'genero.pdf',       title: 'Perspectiva de Género',           desc: 'Protocolo con perspectiva de género.',                    cat: 'Derechos' },
-    { file: 'victimas.pdf',     title: 'Atención a Víctimas',             desc: 'Ley General de Víctimas y atención inmediata.',           cat: 'Derechos' },
     { file: 'salud.pdf',        title: 'Salud Pública',                   desc: 'Faltas administrativas a la salud pública.',              cat: 'Marco Legal' },
     { file: 'alba.pdf',         title: 'Protocolo Alba',                  desc: 'Búsqueda inmediata de mujeres desaparecidas.',            cat: 'Derechos' },
     { file: 'bando.pdf',        title: 'Bando de Policía y Buen Gobierno',desc: 'Faltas administrativas locales.',                         cat: 'Marco Legal' },
-    { file: 'reglamento.pdf',   title: 'Reglamento',                      desc: 'Reglamento aplicable al cuerpo policial.',                cat: 'Marco Legal' },
     { file: 'juris.pdf',        title: 'Jurisprudencia',                  desc: 'Criterios y tesis jurisprudenciales relevantes.',         cat: 'Marco Legal' },
-    { file: 'gaceta.pdf',       title: 'Gaceta',                          desc: 'Publicaciones oficiales relacionadas.',                   cat: 'Marco Legal' },
-    { file: 'LGSNSP.pdf',       title: 'LGSNSP',                          desc: 'Ley General del Sistema Nacional de Seguridad Pública.',  cat: 'Marco Legal' }
+    { file: 'gaceta.pdf',       title: 'Gaceta',                          desc: 'Publicaciones oficiales relacionadas.',                   cat: 'Marco Legal' }
   ];
 
   // Mapeo de acciones especiales (ACCION:xxx) -> PDF de referencia
@@ -296,35 +282,21 @@
   const RECURSOS = window.RECURSOS || [];
 
   function renderItem(it) {
-    // Construye un solo item dentro de un bloque de recurso
     const isExternal = it.kind === 'external';
-    const href = isExternal ? it.href : ('pdfs/' + it.file);
-    const target = isExternal ? '_blank' : '_self';
-    const rel = isExternal ? 'noopener' : '';
     const iconKey = isExternal ? 'external' : 'pdf';
-    const labelKind = isExternal ? 'Enlace oficial' : 'PDF local';
-
-    const localPdfHtml = it.localPdf
-      ? `<button class="rec-item-secondary" data-pdf="${it.localPdf}" title="Abrir versión local del APK">
-           ${ICONS.pdf}<span>Versión local</span>
-         </button>`
-      : '';
-
     const noteHtml = it.note ? `<small class="rec-item-note">${escapeHtml(it.note)}</small>` : '';
 
     if (isExternal) {
       return `
         <div class="rec-item">
-          <a href="${href}" target="${target}" rel="${rel}" class="rec-item-main">
+          <a href="${it.href}" target="_blank" rel="noopener" class="rec-item-main">
             <span class="rec-item-icon">${ICONS[iconKey]}</span>
             <span class="rec-item-text">
               <strong>${escapeHtml(it.title)}</strong>
-              <span class="rec-item-kind">${labelKind}</span>
               ${noteHtml}
             </span>
             <span class="rec-item-go">${ICONS.arrow}</span>
           </a>
-          ${localPdfHtml}
         </div>`;
     } else {
       return `
@@ -333,7 +305,6 @@
             <span class="rec-item-icon">${ICONS[iconKey]}</span>
             <span class="rec-item-text">
               <strong>${escapeHtml(it.title)}</strong>
-              <span class="rec-item-kind">${labelKind}</span>
               ${noteHtml}
             </span>
             <span class="rec-item-go">${ICONS.arrow}</span>
