@@ -390,26 +390,29 @@
   // Menú hamburguesa (móvil)
   const navToggle = document.getElementById('nav-toggle');
   const mainNav = document.getElementById('main-nav');
+  const navOverlay = document.getElementById('nav-overlay');
   if (navToggle && mainNav) {
     const closeNav = () => {
       mainNav.classList.remove('is-open');
       navToggle.classList.remove('is-open');
+      if (navOverlay) navOverlay.classList.remove('is-open');
       navToggle.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('nav-open');
+      document.documentElement.classList.remove('nav-open');
     };
-    navToggle.addEventListener('click', () => {
-      const open = mainNav.classList.toggle('is-open');
+    const toggleNav = () => {
+      const open = !mainNav.classList.contains('is-open');
+      mainNav.classList.toggle('is-open', open);
       navToggle.classList.toggle('is-open', open);
+      if (navOverlay) navOverlay.classList.toggle('is-open', open);
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.classList.toggle('nav-open', open);
-    });
-    // Cerrar al hacer click en un enlace
+      document.documentElement.classList.toggle('nav-open', open);
+    };
+    navToggle.addEventListener('click', toggleNav);
+    if (navOverlay) navOverlay.addEventListener('click', closeNav);
     mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
-    // Cerrar al cambiar a desktop
     window.addEventListener('resize', () => {
       if (window.innerWidth > 900) closeNav();
     });
-    // Cerrar con ESC
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && mainNav.classList.contains('is-open')) closeNav();
     });

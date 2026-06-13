@@ -27,6 +27,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   background: radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,0.15), transparent 60%),
               radial-gradient(900px 500px at -10% 20%, rgba(34,211,238,0.10), transparent 60%),
               var(--bg);
@@ -35,6 +36,10 @@ html, body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
+html.nav-open, html.nav-open body { overflow: hidden; }
+
+/* Overlay nav (oculto por defecto) */
+.nav-overlay { display: none; }
 
 img { display: block; max-width: 100%; }
 a { color: var(--accent); text-decoration: none; }
@@ -809,61 +814,71 @@ a:hover { color: #67e8f9; }
 /* ---------- TABLET / MÓVIL — Nav hamburguesa (≤900px) ---------- */
 @media (max-width: 900px) {
   .nav-toggle { display: flex; }
+
+  /* Overlay (elemento real) */
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(2px);
+    z-index: 70;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s, visibility 0.25s;
+  }
+  .nav-overlay.is-open { opacity: 1; visibility: visible; }
+
   .main-nav {
     position: fixed;
     top: 0;
     right: 0;
     height: 100dvh;
-    width: min(320px, 86vw);
+    width: min(300px, 82vw);
     background: var(--panel);
     border-left: 1px solid var(--border);
     flex-direction: column;
     gap: 0;
-    padding: 80px 0 30px;
+    padding: 70px 0 30px;
     transform: translateX(100%);
     transition: transform 0.3s ease;
-    z-index: 60;
-    box-shadow: -20px 0 50px rgba(0,0,0,0.5);
+    z-index: 80;
+    box-shadow: -20px 0 50px rgba(0,0,0,0.6);
     overflow-y: auto;
   }
   .main-nav.is-open { transform: translateX(0); }
   .main-nav a {
-    padding: 16px 26px;
-    font-size: 1.05rem;
+    padding: 16px 24px;
+    font-size: 1.02rem;
     border-bottom: 1px solid var(--border);
     color: var(--text);
+    font-weight: 500;
   }
   .main-nav a:active { background: var(--bg-2); }
-
-  /* Overlay cuando nav está abierto */
-  body.nav-open::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 55;
-    backdrop-filter: blur(2px);
-  }
-  body.nav-open { overflow: hidden; }
 }
 
 /* ---------- MÓVIL (≤700px) ---------- */
 @media (max-width: 700px) {
   .container { width: 92%; }
-  .hero { padding: 40px 0 30px; }
-  .hero h1 { font-size: 1.85rem; }
-  .lead { font-size: 1rem; }
-  .badge { font-size: 0.72rem; padding: 5px 12px; }
+  .hero { padding: 24px 0 30px; }
+  .hero-grid { gap: 24px; }
+  .hero h1 { font-size: 1.5rem; line-height: 1.15; }
+  .lead { font-size: 0.92rem; margin-bottom: 18px; }
+  .badge { font-size: 0.68rem; padding: 4px 10px; margin-bottom: 12px; }
 
-  .hero-actions { flex-direction: column; width: 100%; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-actions { flex-direction: column; width: 100%; gap: 8px; margin-bottom: 22px; }
+  .hero-actions .btn { width: 100%; justify-content: center; padding: 12px; }
 
-  .hero-stats { gap: 24px; width: 100%; }
+  .hero-stats { gap: 14px; width: 100%; }
   .hero-stats div { flex: 1 1 28%; align-items: center; text-align: center; }
-  .hero-stats strong { font-size: 1.4rem; }
+  .hero-stats strong { font-size: 1.25rem; }
+  .hero-stats span { font-size: 0.72rem; }
 
-  .hero-badge { padding: 10px; }
-  .hero-badge img { width: clamp(160px, 60vw, 220px); }
+  .hero-badge { padding: 6px; }
+  .hero-badge img { width: clamp(110px, 38vw, 160px); }
+  .hero-card-body { padding: 14px; gap: 8px; }
+  .step { padding: 10px 12px; font-size: 0.86rem; }
+  .step-icon { width: 18px; height: 18px; }
 
   .section { padding: 50px 0; }
   .section-head h2 { font-size: 1.55rem; }
@@ -946,11 +961,19 @@ a:hover { color: #67e8f9; }
 
 /* ---------- MÓVIL PEQUEÑO (≤400px) ---------- */
 @media (max-width: 400px) {
-  .hero h1 { font-size: 1.55rem; }
-  .hero-stats { gap: 14px; }
-  .hero-stats strong { font-size: 1.2rem; }
-  .hero-stats span { font-size: 0.75rem; }
-  .pdf-grid { grid-template-columns: 1fr 1fr; }
+  .hero h1 { font-size: 1.35rem; }
+  .hero-stats { gap: 10px; }
+  .hero-stats strong { font-size: 1.1rem; }
+  .hero-stats span { font-size: 0.68rem; }
+  .hero-badge img { width: clamp(95px, 32vw, 130px); }
+  .badge { font-size: 0.65rem; }
+  .lead { font-size: 0.88rem; }
+  .pdf-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pdf-card { padding: 12px; }
+  .pdf-card h4 { font-size: 0.85rem; }
+  .pdf-card p { font-size: 0.72rem; }
+  .brand-text { font-size: 0.95rem; }
+  .brand-logo { width: 34px; height: 34px; }
 }
 
 /* ---------- DESKTOP GRANDE (>1400px) — más respiro ---------- */
