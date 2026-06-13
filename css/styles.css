@@ -807,8 +807,8 @@ a:hover { color: #67e8f9; }
   .guide-side { position: static; }
 }
 
-/* ---------- MÓVIL/TABLET — Hamburguesa (≤900px) ---------- */
-@media (max-width: 900px) {
+/* ---------- MÓVIL/TABLET — Hamburguesa (≤1024px) ---------- */
+@media (max-width: 1024px) {
   .nav-toggle { display: flex; }
 
   /* Overlay como elemento real */

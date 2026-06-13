@@ -411,7 +411,7 @@
     if (navOverlay) navOverlay.addEventListener('click', closeNav);
     mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 900) closeNav();
+      if (window.innerWidth > 1024) closeNav();
     });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && mainNav.classList.contains('is-open')) closeNav();
