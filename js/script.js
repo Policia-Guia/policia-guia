@@ -201,7 +201,9 @@
   function renderPdfs(list) {
     grid.innerHTML = list.map(p => `
       <article class="pdf-card" data-file="${p.file}" data-title="${escapeHtml(p.title)}">
-        <div class="pdf-icon">${ICONS.pdf}</div>
+        <div class="pdf-card-thumb">
+          <img src="${thumbFor(p.file)}" alt="" loading="lazy" />
+        </div>
         <h4>${escapeHtml(p.title)}</h4>
         <p>${escapeHtml(p.desc)}</p>
         <div class="pdf-card-foot">
@@ -281,16 +283,19 @@
   const recursosGrid = document.getElementById('recursos-grid');
   const RECURSOS = window.RECURSOS || [];
 
+  function thumbFor(file) {
+    return 'assets/thumbs/' + file.replace(/\.pdf$/i, '.jpg');
+  }
+
   function renderItem(it) {
     const isExternal = it.kind === 'external';
-    const iconKey = isExternal ? 'external' : 'pdf';
     const noteHtml = it.note ? `<small class="rec-item-note">${escapeHtml(it.note)}</small>` : '';
 
     if (isExternal) {
       return `
         <div class="rec-item">
           <a href="${it.href}" target="_blank" rel="noopener" class="rec-item-main">
-            <span class="rec-item-icon">${ICONS[iconKey]}</span>
+            <span class="rec-item-icon">${ICONS.external}</span>
             <span class="rec-item-text">
               <strong>${escapeHtml(it.title)}</strong>
               ${noteHtml}
@@ -301,8 +306,10 @@
     } else {
       return `
         <div class="rec-item">
-          <button class="rec-item-main" data-pdf="${it.file}">
-            <span class="rec-item-icon">${ICONS[iconKey]}</span>
+          <button class="rec-item-main rec-item-pdf" data-pdf="${it.file}">
+            <span class="rec-thumb">
+              <img src="${thumbFor(it.file)}" alt="" loading="lazy" />
+            </span>
             <span class="rec-item-text">
               <strong>${escapeHtml(it.title)}</strong>
               ${noteHtml}
