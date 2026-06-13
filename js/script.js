@@ -201,9 +201,7 @@
   function renderPdfs(list) {
     grid.innerHTML = list.map(p => `
       <article class="pdf-card" data-file="${p.file}" data-title="${escapeHtml(p.title)}">
-        <div class="pdf-card-thumb">
-          <img src="${thumbFor(p.file)}" alt="" loading="lazy" />
-        </div>
+        <div class="pdf-icon">${ICONS.pdf}</div>
         <h4>${escapeHtml(p.title)}</h4>
         <p>${escapeHtml(p.desc)}</p>
         <div class="pdf-card-foot">
@@ -306,10 +304,8 @@
     } else {
       return `
         <div class="rec-item">
-          <button class="rec-item-main rec-item-pdf" data-pdf="${it.file}">
-            <span class="rec-thumb">
-              <img src="${thumbFor(it.file)}" alt="" loading="lazy" />
-            </span>
+          <button class="rec-item-main" data-pdf="${it.file}">
+            <span class="rec-item-icon">${ICONS.pdf}</span>
             <span class="rec-item-text">
               <strong>${escapeHtml(it.title)}</strong>
               ${noteHtml}

@@ -474,25 +474,16 @@ a:hover { color: #67e8f9; }
   border-color: var(--accent);
   box-shadow: 0 12px 28px rgba(0,0,0,0.45), 0 0 0 1px var(--accent-glow);
 }
-.pdf-card-thumb {
-  width: 100%;
-  height: 180px;
+.pdf-icon {
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
-  overflow: hidden;
-  background: var(--panel-2);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(34,211,238,0.18), rgba(59,130,246,0.12));
+  border: 1px solid rgba(34,211,238,0.3);
+  display: grid;
+  place-items: center;
 }
-.pdf-card-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  display: block;
-  transition: transform 0.3s ease;
-}
-.pdf-card:hover .pdf-card-thumb img {
-  transform: scale(1.04);
-}
+.pdf-icon svg { width: 22px; height: 22px; color: var(--accent); }
 .pdf-card h4 {
   margin: 0;
   font-size: 1rem;
@@ -605,27 +596,6 @@ a:hover { color: #67e8f9; }
   font: inherit;
   text-decoration: none;
   transition: all 0.2s;
-}
-.rec-item-pdf {
-  grid-template-columns: 56px 1fr auto;
-}
-.rec-thumb {
-  width: 56px;
-  height: 72px;
-  border-radius: 6px;
-  overflow: hidden;
-  background: var(--panel-2);
-  border: 1px solid var(--border);
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-.rec-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  display: block;
 }
 .rec-item-main:hover {
   border-color: var(--accent);
@@ -918,8 +888,6 @@ a:hover { color: #67e8f9; }
     padding: 12px;
     min-height: 56px;
   }
-  .rec-item-pdf { grid-template-columns: 48px 1fr auto; }
-  .rec-thumb { width: 48px; height: 60px; }
   .rec-item-icon { width: 34px; height: 34px; }
   .rec-item-text strong { font-size: 0.92rem; line-height: 1.3; }
   .rec-item-note { font-size: 0.74rem; }
@@ -951,7 +919,6 @@ a:hover { color: #67e8f9; }
     gap: 14px;
   }
   .pdf-card { padding: 14px; gap: 10px; }
-  .pdf-card-thumb { height: 140px; }
   .pdf-card h4 { font-size: 0.92rem; }
   .pdf-card p { font-size: 0.78rem; }
   .pdf-card-foot { font-size: 0.72rem; padding-top: 8px; }
@@ -984,7 +951,6 @@ a:hover { color: #67e8f9; }
   .hero-stats strong { font-size: 1.2rem; }
   .hero-stats span { font-size: 0.75rem; }
   .pdf-grid { grid-template-columns: 1fr 1fr; }
-  .pdf-card-thumb { height: 120px; }
 }
 
 /* ---------- DESKTOP GRANDE (>1400px) — más respiro ---------- */
