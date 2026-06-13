@@ -643,14 +643,6 @@ a:hover { color: #67e8f9; }
 .dot-mp          { background: #f59e0b; }
 .dot-juez        { background: #c4b5fd; }
 
-@media (max-width: 700px) {
-  .rec-card-head { grid-template-columns: auto 1fr; padding: 18px; }
-  .rec-card-head .rec-card-icon { display: none; }
-  .rec-card-body { padding: 18px; }
-  .rec-item-main { grid-template-columns: 32px 1fr auto; padding: 12px; }
-  .rec-item { grid-template-columns: 1fr; }
-}
-
 /* ============ ABOUT ============ */
 .about-grid {
   display: grid;
