@@ -60,7 +60,17 @@
     pstation:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M10 21v-6h4v6"/></svg>',
     pdf:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>',
     info:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>',
-    arrow:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+    arrow:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+    external:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4L10 14"/><path d="M19 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6"/></svg>',
+    download:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>',
+    database:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>',
+    clipboard:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 011-1h4a1 1 0 011 1v1"/><path d="M9 11h6M9 15h6"/></svg>',
+    book:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4z"/><path d="M4 16a4 4 0 014-4h12"/></svg>',
+    lightbulb:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h6"/><path d="M10 17h4"/><path d="M12 3a6 6 0 00-4 10c1 1 1.5 2 2 4h4c.5-2 1-3 2-4a6 6 0 00-4-10z"/></svg>',
+    scale:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 21h14"/><path d="M5 9l-2 5a3 3 0 006 0L7 9z"/><path d="M19 9l-2 5a3 3 0 006 0l-2-5z"/><path d="M5 6h14"/></svg>',
+    globe:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 010 18a14 14 0 010-18z"/></svg>',
+    pin:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7-7-12a7 7 0 0114 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>',
+    shield:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>'
   };
 
   // ============================================================
@@ -280,6 +290,119 @@
   }
 
   // ============================================================
+  // RECURSOS OFICIALES (8 secciones del docx)
+  // ============================================================
+  const recursosGrid = document.getElementById('recursos-grid');
+  const RECURSOS = window.RECURSOS || [];
+
+  function renderItem(it) {
+    // Construye un solo item dentro de un bloque de recurso
+    const isExternal = it.kind === 'external';
+    const href = isExternal ? it.href : ('pdfs/' + it.file);
+    const target = isExternal ? '_blank' : '_self';
+    const rel = isExternal ? 'noopener' : '';
+    const iconKey = isExternal ? 'external' : 'pdf';
+    const labelKind = isExternal ? 'Enlace oficial' : 'PDF local';
+
+    const localPdfHtml = it.localPdf
+      ? `<button class="rec-item-secondary" data-pdf="${it.localPdf}" title="Abrir versión local del APK">
+           ${ICONS.pdf}<span>Versión local</span>
+         </button>`
+      : '';
+
+    const noteHtml = it.note ? `<small class="rec-item-note">${escapeHtml(it.note)}</small>` : '';
+
+    if (isExternal) {
+      return `
+        <div class="rec-item">
+          <a href="${href}" target="${target}" rel="${rel}" class="rec-item-main">
+            <span class="rec-item-icon">${ICONS[iconKey]}</span>
+            <span class="rec-item-text">
+              <strong>${escapeHtml(it.title)}</strong>
+              <span class="rec-item-kind">${labelKind}</span>
+              ${noteHtml}
+            </span>
+            <span class="rec-item-go">${ICONS.arrow}</span>
+          </a>
+          ${localPdfHtml}
+        </div>`;
+    } else {
+      return `
+        <div class="rec-item">
+          <button class="rec-item-main" data-pdf="${it.file}">
+            <span class="rec-item-icon">${ICONS[iconKey]}</span>
+            <span class="rec-item-text">
+              <strong>${escapeHtml(it.title)}</strong>
+              <span class="rec-item-kind">${labelKind}</span>
+              ${noteHtml}
+            </span>
+            <span class="rec-item-go">${ICONS.arrow}</span>
+          </button>
+        </div>`;
+    }
+  }
+
+  function renderSections(sections) {
+    // Renderiza badges de secciones/anexos para los IPH
+    return `
+      <div class="rec-sections">
+        ${sections.map(s => `
+          <span class="rec-chip rec-chip-${s.kind}" ${s.note ? `title="${escapeHtml(s.note)}"` : ''}>
+            ${escapeHtml(s.label)}
+          </span>
+        `).join('')}
+      </div>
+      <div class="rec-sections-legend">
+        <span><i class="dot dot-obligatoria"></i> Información obligatoria</span>
+        <span><i class="dot dot-adicional"></i> Información adicional</span>
+        <span><i class="dot dot-mp"></i> Que pide MP</span>
+        <span><i class="dot dot-juez"></i> Si lo requiere juez cívico</span>
+      </div>`;
+  }
+
+  function renderRecursos() {
+    if (!recursosGrid) return;
+    recursosGrid.innerHTML = RECURSOS.map(r => {
+      const headerIcon = ICONS[r.icon] || ICONS.shield;
+      let body = '';
+      if (r.subgroups) {
+        body = r.subgroups.map(g => `
+          <div class="rec-subgroup">
+            <h4>${escapeHtml(g.title)}</h4>
+            <div class="rec-items">${(g.items || []).map(renderItem).join('')}</div>
+            ${g.sections ? renderSections(g.sections) : ''}
+          </div>
+        `).join('');
+      } else {
+        body = `<div class="rec-items">${(r.items || []).map(renderItem).join('')}</div>`;
+      }
+
+      return `
+        <article class="rec-card" id="rec-${r.id}">
+          <header class="rec-card-head">
+            <span class="rec-num">${r.num}</span>
+            <span class="rec-card-icon">${headerIcon}</span>
+            <div class="rec-card-title">
+              <h3>${escapeHtml(r.title)}</h3>
+              <p>${r.desc}</p>
+            </div>
+          </header>
+          <div class="rec-card-body">${body}</div>
+        </article>`;
+    }).join('');
+
+    // Delegación de clicks para abrir PDFs locales
+    recursosGrid.querySelectorAll('[data-pdf]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        const file = el.dataset.pdf;
+        const meta = PDFS.find(p => p.file === file);
+        openPdfModal(file, meta ? meta.title : file);
+      });
+    });
+  }
+
+  // ============================================================
   // BOOT
   // ============================================================
   // API pública para handlers inline
@@ -294,6 +417,7 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // Render inicial
+  renderRecursos();
   renderPdfs(PDFS);
   restart();
 })();
