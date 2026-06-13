@@ -387,36 +387,6 @@
   btnBack.addEventListener('click', back);
   search.addEventListener('input', e => filterPdfs(e.target.value));
 
-  // Menú hamburguesa (móvil)
-  const navToggle = document.getElementById('nav-toggle');
-  const mainNav = document.getElementById('main-nav');
-  const navOverlay = document.getElementById('nav-overlay');
-  if (navToggle && mainNav) {
-    const closeNav = () => {
-      mainNav.classList.remove('is-open');
-      navToggle.classList.remove('is-open');
-      if (navOverlay) navOverlay.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      document.documentElement.classList.remove('nav-open');
-    };
-    const toggleNav = () => {
-      const open = !mainNav.classList.contains('is-open');
-      mainNav.classList.toggle('is-open', open);
-      navToggle.classList.toggle('is-open', open);
-      if (navOverlay) navOverlay.classList.toggle('is-open', open);
-      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.documentElement.classList.toggle('nav-open', open);
-    };
-    navToggle.addEventListener('click', toggleNav);
-    if (navOverlay) navOverlay.addEventListener('click', closeNav);
-    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 900) closeNav();
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && mainNav.classList.contains('is-open')) closeNav();
-    });
-  }
 
   // Año en footer
   document.getElementById('year').textContent = new Date().getFullYear();
