@@ -34,19 +34,19 @@ window.RECURSOS = [
           { title: 'Presentación del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
         ],
         sections: [
-          { label: 'Sección 1', kind: 'obligatoria' },
-          { label: 'Sección 2', kind: 'obligatoria' },
-          { label: 'Sección 3', kind: 'obligatoria' },
-          { label: 'Sección 4', kind: 'obligatoria' },
-          { label: 'Sección 5', kind: 'obligatoria' },
-          { label: 'Anexo A', kind: 'adicional' },
-          { label: 'Anexo B', kind: 'adicional' },
-          { label: 'Anexo C', kind: 'adicional' },
-          { label: 'Anexo D', kind: 'adicional' },
-          { label: 'Anexo E', kind: 'adicional' },
-          { label: 'Anexo F', kind: 'mp', note: 'que pide MP' },
-          { label: 'Anexo G', kind: 'mp' },
-          { label: 'Cadena de Custodia', kind: 'adicional' }
+          { label: 'Sección 1', kind: 'obligatoria', doc: 'iph', anchor: 'seccion-1' },
+          { label: 'Sección 2', kind: 'obligatoria', doc: 'iph', anchor: 'seccion-2' },
+          { label: 'Sección 3', kind: 'obligatoria', doc: 'iph', anchor: 'seccion-3' },
+          { label: 'Sección 4', kind: 'obligatoria', doc: 'iph', anchor: 'seccion-4' },
+          { label: 'Sección 5', kind: 'obligatoria', doc: 'iph', anchor: 'seccion-5' },
+          { label: 'Anexo A', kind: 'adicional', doc: 'iph', anchor: 'anexo-a' },
+          { label: 'Anexo B', kind: 'adicional', doc: 'iph', anchor: 'anexo-b' },
+          { label: 'Anexo C', kind: 'adicional', doc: 'iph', anchor: 'anexo-c' },
+          { label: 'Anexo D', kind: 'adicional', doc: 'iph', anchor: 'anexo-d' },
+          { label: 'Anexo E', kind: 'adicional', doc: 'iph', anchor: 'anexo-e' },
+          { label: 'Anexo F', kind: 'mp', note: 'que pide MP', doc: 'iph', anchor: 'anexo-f' },
+          { label: 'Anexo G', kind: 'mp', doc: 'iph', anchor: 'anexo-g' },
+          { label: 'Cadena de Custodia', kind: 'adicional', doc: 'iph', anchor: 'cadena' }
         ]
       },
       {
@@ -55,12 +55,12 @@ window.RECURSOS = [
           { title: 'Informe Policial Homologado para justicia cívica', kind: 'pdf', file: 'iphj.pdf' }
         ],
         sections: [
-          { label: 'Sección 1', kind: 'obligatoria' },
-          { label: 'Sección 2', kind: 'obligatoria' },
-          { label: 'Sección 3', kind: 'obligatoria' },
-          { label: 'Sección 4', kind: 'obligatoria' },
-          { label: 'Anexo A', kind: 'juez' },
-          { label: 'Anexo B', kind: 'juez', note: 'solo si el juez cívico lo requiere' }
+          { label: 'Sección 1', kind: 'obligatoria', doc: 'iph-civica', anchor: 'seccion-1' },
+          { label: 'Sección 2', kind: 'obligatoria', doc: 'iph-civica', anchor: 'seccion-2' },
+          { label: 'Sección 3', kind: 'obligatoria', doc: 'iph-civica', anchor: 'seccion-3' },
+          { label: 'Sección 4', kind: 'obligatoria', doc: 'iph-civica', anchor: 'seccion-4' },
+          { label: 'Anexo A', kind: 'juez', doc: 'iph-civica', anchor: 'anexo-a' },
+          { label: 'Anexo B', kind: 'juez', note: 'solo si el juez cívico lo requiere', doc: 'iph-civica', anchor: 'anexo-b' }
         ]
       }
     ]

@@ -1,0 +1,164 @@
+/* ============================================================
+   PolicíaGuía — Visor de DOCX con navegación a secciones
+   ============================================================ */
+
+.viewer-page {
+  padding: 30px 0 60px;
+  min-height: calc(100vh - 200px);
+}
+
+.viewer-header { margin-bottom: 18px; text-align: center; }
+.viewer-header h1 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 0 0 6px;
+  color: var(--text);
+}
+.muted { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
+/* Toolbar */
+.viewer-toolbar {
+  position: sticky;
+  top: 70px;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.toolbar-left, .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.autosave-status {
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding: 4px 10px;
+  background: var(--bg-2);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.autosave-status.ok { color: var(--success); }
+.autosave-status.err { color: var(--danger); }
+
+/* Índice rápido */
+.quick-toc {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+.quick-toc h3 {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+}
+.toc-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.toc-link {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.83rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.toc-link:hover {
+  background: rgba(34,211,238,0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.toc-link.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #07111f;
+}
+
+/* Loading / Error */
+.loading-state, .error-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.error-state { color: var(--danger); }
+
+/* Contenedor del DOCX renderizado */
+.docx-container {
+  background: #ffffff;
+  color: #111;
+  border-radius: 6px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+}
+.docx-container .docx-wrapper {
+  background: transparent !important;
+  padding: 0 !important;
+}
+.docx-container .docx {
+  background: white !important;
+  margin: 0 auto !important;
+  padding: 24px !important;
+  box-shadow: none !important;
+  min-height: auto !important;
+}
+
+/* Destacar la sección actual con efecto de "flash" */
+.docx-container [data-anchor].highlight {
+  background-color: #fff3a8 !important;
+  transition: background-color 1.8s ease;
+}
+
+/* Scroll suave */
+html { scroll-behavior: smooth; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .viewer-page { padding: 18px 0 40px; }
+  .viewer-toolbar {
+    position: static;
+    padding: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .toolbar-left, .toolbar-right { justify-content: center; }
+  .toolbar-right { width: 100%; }
+  .toolbar-right .btn { flex: 1; justify-content: center; }
+  .quick-toc { padding: 12px; }
+  .toc-link { font-size: 0.78rem; padding: 5px 10px; }
+  .docx-container { padding: 6px; border-radius: 4px; }
+  .docx-container .docx { padding: 14px !important; }
+}

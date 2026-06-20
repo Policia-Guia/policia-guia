@@ -672,6 +672,16 @@ a:hover { color: #67e8f9; }
 .rec-chip-adicional   { background: rgba(34,211,238,0.10); border-color: rgba(34,211,238,0.30); color: var(--accent); }
 .rec-chip-mp          { background: rgba(245,158,11,0.10); border-color: rgba(245,158,11,0.35); color: #f59e0b; }
 .rec-chip-juez        { background: rgba(168,85,247,0.10); border-color: rgba(168,85,247,0.35); color: #c4b5fd; }
+a.rec-chip-link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+a.rec-chip-link:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
 
 .rec-sections-legend {
   display: flex;

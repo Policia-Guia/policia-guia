@@ -330,19 +330,24 @@
 
   function renderSections(sections) {
     // Renderiza badges de secciones/anexos para los IPH
+    // Si tienen doc+anchor, se convierten en enlaces al visor
     return `
       <div class="rec-sections">
-        ${sections.map(s => `
-          <span class="rec-chip rec-chip-${s.kind}" ${s.note ? `title="${escapeHtml(s.note)}"` : ''}>
-            ${escapeHtml(s.label)}
-          </span>
-        `).join('')}
+        ${sections.map(s => {
+          const titleAttr = s.note ? `title="${escapeHtml(s.note)}"` : '';
+          if (s.doc && s.anchor) {
+            const href = `viewer.html?doc=${encodeURIComponent(s.doc)}#${encodeURIComponent(s.anchor)}`;
+            return `<a href="${href}" class="rec-chip rec-chip-${s.kind} rec-chip-link" ${titleAttr}>${escapeHtml(s.label)} →</a>`;
+          }
+          return `<span class="rec-chip rec-chip-${s.kind}" ${titleAttr}>${escapeHtml(s.label)}</span>`;
+        }).join('')}
       </div>
       <div class="rec-sections-legend">
         <span><i class="dot dot-obligatoria"></i> Información obligatoria</span>
         <span><i class="dot dot-adicional"></i> Información adicional</span>
         <span><i class="dot dot-mp"></i> Que pide MP</span>
         <span><i class="dot dot-juez"></i> Si lo requiere juez cívico</span>
+        <span style="opacity:.7">· Toca cualquier sección para abrir el documento ahí ↗</span>
       </div>`;
   }
 
