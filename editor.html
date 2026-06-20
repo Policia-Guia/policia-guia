@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor de documento — PolicíaGuía</title>
+  <link rel="stylesheet" href="css/styles.css?v=5" />
+  <link rel="stylesheet" href="css/editor.css?v=1" />
+  <link rel="icon" type="image/jpeg" href="assets/logo-tonala.jpg" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo-tonala.jpg" alt="Policía Municipal Tonalá" class="brand-logo" />
+        <span class="brand-text">Policía<strong>Guía</strong></span>
+      </a>
+      <a href="index.html" class="btn btn-ghost btn-sm">← Volver al inicio</a>
+    </div>
+  </header>
+
+  <main class="editor-page">
+    <div class="container">
+
+      <header class="editor-header">
+        <h1 id="doc-title">Editor de documento</h1>
+        <p id="doc-desc" class="muted">Carga el formato oficial, llénalo y guárdalo en tu dispositivo.</p>
+      </header>
+
+      <!-- Barra de herramientas -->
+      <div class="editor-toolbar">
+        <div class="toolbar-left">
+          <span id="autosave-status" class="autosave-status">Listo</span>
+        </div>
+        <div class="toolbar-right">
+          <a id="btn-download-original" href="#" class="btn btn-ghost btn-sm" download>
+            ⬇ Descargar original (en blanco)
+          </a>
+          <button id="btn-clear" class="btn btn-ghost btn-sm">🗑 Limpiar</button>
+          <button id="btn-save" class="btn btn-primary btn-sm">💾 Guardar como DOCX</button>
+        </div>
+      </div>
+
+      <!-- Estado de carga -->
+      <div id="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Cargando documento…</p>
+      </div>
+
+      <!-- Error -->
+      <div id="error" class="error-state" hidden>
+        <p>❌ <span id="error-msg">No se pudo cargar el documento.</span></p>
+        <a href="index.html" class="btn btn-ghost btn-sm">← Volver al inicio</a>
+      </div>
+
+      <!-- Contenido editable -->
+      <div id="editor-paper" class="editor-paper" hidden>
+        <div id="editor-content" class="editor-content" contenteditable="true" spellcheck="true"></div>
+      </div>
+
+      <!-- Instrucciones móvil -->
+      <div class="editor-help">
+        <h3>💡 Cómo usar este editor</h3>
+        <ul>
+          <li><strong>Llenar el documento:</strong> toca cualquier parte del documento y empieza a escribir.</li>
+          <li><strong>Autoguardado:</strong> mientras escribes, tu progreso se guarda automáticamente en este dispositivo. Si cierras la página y vuelves después, tus datos siguen aquí.</li>
+          <li><strong>Guardar como DOCX:</strong> al terminar, presiona <em>"Guardar como DOCX"</em>. El archivo se descargará a tu carpeta de Descargas.</li>
+          <li><strong>Abrir el archivo guardado:</strong> en Android busca el archivo descargado y ábrelo con Microsoft Word, Google Docs o WPS Office. En iPhone, ábrelo desde la app Archivos.</li>
+          <li><strong>Limpiar:</strong> borra todo lo que escribiste y vuelve al documento original en blanco.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <img src="assets/logo-tonala.jpg" alt="" class="brand-logo" />
+        <span>Policía<strong>Guía</strong></span>
+      </div>
+      <small>© <span id="year"></span> PolicíaGuía</small>
+    </div>
+  </footer>
+
+  <!-- Librerías para leer y generar DOCX -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+  <script src="js/editor.js?v=1"></script>
+</body>
+</html>

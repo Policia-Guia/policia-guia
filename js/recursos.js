@@ -24,13 +24,13 @@ window.RECURSOS = [
     id: 'iph',
     num: 2,
     title: 'IPH — Informe Policial Homologado',
-    desc: 'Formatos del IPH para hecho probablemente delictivo y para justicia cívica. Descarga el PDF y ábrelo en Adobe Reader para escribir y guardar.',
+    desc: 'Formatos del IPH para hecho probablemente delictivo y para justicia cívica. Puedes llenarlos directamente aquí y guardarlos en tu dispositivo.',
     icon: 'clipboard',
     subgroups: [
       {
         title: 'IPH — Hecho probablemente delictivo',
         items: [
-          { title: 'Informe Policial Homologado para hecho probablemente delictivo', kind: 'pdf', file: 'iph.pdf' },
+          { title: 'Llenar IPH (editable, guarda en tu dispositivo)', kind: 'editor', editorDoc: 'iph' },
           { title: 'Presentación del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
         ],
         sections: [
@@ -171,6 +171,7 @@ window.RECURSOS = [
     desc: 'Protocolos de actuación y guías nacionales de procedimiento.',
     icon: 'shield',
     items: [
+      { title: 'Registro de Cadena de Custodia (editable, guarda en tu dispositivo)', kind: 'editor', editorDoc: 'cadena' },
       { title: 'Protocolo Nacional de Actuación — Traslado', kind: 'external',
         href: 'https://www.gob.mx/sspc/documentos/protocolos-nacionales-de-actuacion' },
       { title: 'Protocolo Nacional de Actuación — Policía con Capacidades para Procesar Lugar de la Intervención', kind: 'external',

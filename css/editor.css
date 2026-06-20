@@ -1,0 +1,195 @@
+/* ============================================================
+   PolicíaGuía — Editor de DOCX
+   ============================================================ */
+
+.editor-page {
+  padding: 40px 0 60px;
+  min-height: calc(100vh - 200px);
+}
+
+.editor-header { margin-bottom: 24px; text-align: center; }
+.editor-header h1 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 0 0 8px;
+  color: var(--text);
+}
+.muted { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
+/* Toolbar */
+.editor-toolbar {
+  position: sticky;
+  top: 70px;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.toolbar-left, .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.autosave-status {
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding: 4px 10px;
+  background: var(--bg-2);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.autosave-status.saving { color: #f59e0b; }
+.autosave-status.saved { color: var(--success); }
+
+/* Loading / Error */
+.loading-state, .error-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error-state { color: var(--danger); }
+
+/* Hoja editable (apariencia de papel) */
+.editor-paper {
+  background: #ffffff;
+  color: #111;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  margin: 0 auto;
+  max-width: 820px;
+  padding: 48px 56px;
+  min-height: 600px;
+  border: 1px solid #ddd;
+}
+.editor-content {
+  font-family: 'Calibri', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: #111;
+  outline: none;
+  min-height: 500px;
+}
+.editor-content:focus {
+  outline: none;
+}
+.editor-content[contenteditable="true"]:hover {
+  cursor: text;
+}
+
+/* Estilo del contenido (resetea sobre fondo blanco) */
+.editor-content h1,
+.editor-content h2,
+.editor-content h3,
+.editor-content h4 {
+  color: #0b1220;
+  margin: 14px 0 8px;
+  line-height: 1.25;
+}
+.editor-content h1 { font-size: 1.4em; text-align: center; }
+.editor-content h2 { font-size: 1.2em; border-bottom: 2px solid #444; padding-bottom: 4px; }
+.editor-content h3 { font-size: 1.05em; }
+.editor-content p { margin: 6px 0; }
+.editor-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+.editor-content table td, .editor-content table th {
+  border: 1px solid #888;
+  padding: 6px 8px;
+  vertical-align: top;
+}
+.editor-content table th { background: #f0f0f0; }
+.editor-content ul, .editor-content ol { padding-left: 22px; }
+.editor-content img { max-width: 100%; height: auto; }
+.editor-content a { color: #1e40af; }
+
+/* Indicador visual cuando se edita */
+.editor-content:focus-within {
+  /* nada visual, el cursor ya indica */
+}
+
+/* Ayuda al final */
+.editor-help {
+  margin-top: 30px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.editor-help h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+.editor-help ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.editor-help li { margin-bottom: 6px; }
+.editor-help strong { color: var(--text); }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .editor-page { padding: 20px 0 40px; }
+  .editor-toolbar {
+    position: static;
+    padding: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .toolbar-left, .toolbar-right { justify-content: center; }
+  .toolbar-right { width: 100%; }
+  .toolbar-right .btn { flex: 1; justify-content: center; }
+  .editor-paper {
+    padding: 22px 18px;
+    border-radius: 4px;
+    max-width: 100%;
+  }
+  .editor-content { font-size: 10.5pt; }
+  .editor-help { padding: 18px; }
+  .editor-help ul { font-size: 0.88rem; }
+}
+
+/* Print: solo el contenido del documento */
+@media print {
+  body * { visibility: hidden; }
+  .editor-paper, .editor-paper * { visibility: visible; }
+  .editor-paper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+  }
+}

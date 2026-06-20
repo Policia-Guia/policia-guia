@@ -56,7 +56,8 @@
     scale:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 21h14"/><path d="M5 9l-2 5a3 3 0 006 0L7 9z"/><path d="M19 9l-2 5a3 3 0 006 0l-2-5z"/><path d="M5 6h14"/></svg>',
     globe:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 010 18a14 14 0 010-18z"/></svg>',
     pin:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7-7-12a7 7 0 0114 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>',
-    shield:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>'
+    shield:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>',
+    pencil:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6-12 12H2v-6z"/><path d="M14 4l3-3 6 6-3 3"/></svg>'
   };
 
   // ============================================================
@@ -286,14 +287,25 @@
   }
 
   function renderItem(it) {
-    const isExternal = it.kind === 'external';
     const noteHtml = it.note ? `<small class="rec-item-note">${escapeHtml(it.note)}</small>` : '';
 
-    if (isExternal) {
+    if (it.kind === 'external') {
       return `
         <div class="rec-item">
           <a href="${it.href}" target="_blank" rel="noopener" class="rec-item-main">
             <span class="rec-item-icon">${ICONS.external}</span>
+            <span class="rec-item-text">
+              <strong>${escapeHtml(it.title)}</strong>
+              ${noteHtml}
+            </span>
+            <span class="rec-item-go">${ICONS.arrow}</span>
+          </a>
+        </div>`;
+    } else if (it.kind === 'editor') {
+      return `
+        <div class="rec-item">
+          <a href="editor.html?doc=${encodeURIComponent(it.editorDoc)}" class="rec-item-main rec-item-editor">
+            <span class="rec-item-icon">${ICONS.pencil}</span>
             <span class="rec-item-text">
               <strong>${escapeHtml(it.title)}</strong>
               ${noteHtml}
