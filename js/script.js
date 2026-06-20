@@ -301,14 +301,14 @@
             <span class="rec-item-go">${ICONS.arrow}</span>
           </a>
         </div>`;
-    } else if (it.kind === 'editor') {
+    } else if (it.kind === 'download') {
       return `
         <div class="rec-item">
-          <a href="editor.html?doc=${encodeURIComponent(it.editorDoc)}" class="rec-item-main rec-item-editor">
-            <span class="rec-item-icon">${ICONS.pencil}</span>
+          <a href="${it.file}" download="${it.filename || ''}" class="rec-item-main rec-item-editor">
+            <span class="rec-item-icon">${ICONS.download}</span>
             <span class="rec-item-text">
               <strong>${escapeHtml(it.title)}</strong>
-              ${noteHtml}
+              <small class="rec-item-note">Descarga el archivo y ábrelo con Word / Google Docs / WPS Office para editarlo</small>
             </span>
             <span class="rec-item-go">${ICONS.arrow}</span>
           </a>
