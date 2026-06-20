@@ -308,7 +308,7 @@
             <span class="rec-item-icon">${ICONS.download}</span>
             <span class="rec-item-text">
               <strong>${escapeHtml(it.title)}</strong>
-              <small class="rec-item-note">Descarga el archivo y ábrelo con Word / Google Docs / WPS Office para editarlo</small>
+              ${noteHtml}
             </span>
             <span class="rec-item-go">${ICONS.arrow}</span>
           </a>
