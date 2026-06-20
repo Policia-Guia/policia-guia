@@ -52,7 +52,7 @@ window.RECURSOS = [
       {
         title: 'IPH — Justicia Cívica',
         items: [
-          { title: 'Informe Policial Homologado para justicia cívica', kind: 'pdf', file: 'iphj.pdf' }
+          { title: 'Archivo IPH Justicia Cívica', kind: 'download', file: 'docs/IPH_Justicia_Civica.docx', filename: 'IPH_Justicia_Civica.docx' }
         ],
         sections: [
           { label: 'Sección 1', kind: 'obligatoria', doc: 'iph-civica', anchor: 'seccion-1' },
