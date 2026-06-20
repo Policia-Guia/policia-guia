@@ -24,13 +24,13 @@ window.RECURSOS = [
     id: 'iph',
     num: 2,
     title: 'IPH — Informe Policial Homologado',
-    desc: 'Formatos del IPH para hecho probablemente delictivo y para justicia cívica. Puedes llenarlos directamente en el navegador y guardarlos como DOCX en tu dispositivo.',
+    desc: 'Descarga el formato original DOCX y ábrelo con <strong>Microsoft Word</strong>, <strong>Google Docs</strong> o <strong>WPS Office</strong> en tu celular para llenarlo y guardarlo con el formato exacto del documento oficial.',
     icon: 'clipboard',
     subgroups: [
       {
         title: 'IPH — Hecho probablemente delictivo',
         items: [
-          { title: 'Llenar IPH (editar y guardar en la página)', kind: 'editor', editorDoc: 'iph' },
+          { title: 'IPH para llenar (DOCX editable)', kind: 'download', file: 'docs/IPH_para_llenar.docx', filename: 'IPH_para_llenar.docx' },
           { title: 'Presentación del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
         ],
         sections: [
@@ -171,7 +171,7 @@ window.RECURSOS = [
     desc: 'Protocolos de actuación y guías nacionales de procedimiento.',
     icon: 'shield',
     items: [
-      { title: 'Llenar Registro de Cadena de Custodia (editar y guardar en la página)', kind: 'editor', editorDoc: 'cadena' },
+      { title: 'Registro de Cadena de Custodia (DOCX editable)', kind: 'download', file: 'docs/Registro_Cadena_Custodia.docx', filename: 'Registro_Cadena_Custodia.docx' },
       { title: 'Protocolo Nacional de Actuación — Traslado', kind: 'external',
         href: 'https://www.gob.mx/sspc/documentos/protocolos-nacionales-de-actuacion' },
       { title: 'Protocolo Nacional de Actuación — Policía con Capacidades para Procesar Lugar de la Intervención', kind: 'external',
