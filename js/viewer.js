@@ -11,20 +11,20 @@
       file: 'docs/IPH_para_llenar.docx',
       title: 'Archivo IPH',
       downloadName: 'IPH_para_llenar.docx',
-      // Patrones para identificar secciones en el documento
+      // Mezcla: secciones 1-5 por texto, anexos por número de página
       anchors: [
         { id: 'seccion-1',    label: 'Sección 1',    pattern: /^SECCI[ÓO]N\s*1\b/i },
         { id: 'seccion-2',    label: 'Sección 2',    pattern: /^SECCI[ÓO]N\s*2\b/i },
         { id: 'seccion-3',    label: 'Sección 3',    pattern: /^SECCI[ÓO]N\s*3\b/i },
         { id: 'seccion-4',    label: 'Sección 4',    pattern: /^SECCI[ÓO]N\s*4\b/i },
         { id: 'seccion-5',    label: 'Sección 5',    pattern: /^SECCI[ÓO]N\s*5\b/i },
-        { id: 'anexo-a',      label: 'Anexo A',      pattern: /^ANEXO\s*A\b/i },
-        { id: 'anexo-b',      label: 'Anexo B',      pattern: /^ANEXO\s*B\b/i },
-        { id: 'anexo-c',      label: 'Anexo C',      pattern: /^ANEXO\s*C\b/i },
-        { id: 'anexo-d',      label: 'Anexo D',      pattern: /^ANEXO\s*D\b/i },
-        { id: 'anexo-e',      label: 'Anexo E',      pattern: /^ANEXO\s*E\b/i },
-        { id: 'anexo-f',      label: 'Anexo F',      pattern: /^ANEXO\s*F\b/i },
-        { id: 'anexo-g',      label: 'Anexo G',      pattern: /^ANEXO\s*G\b/i },
+        { id: 'anexo-a',      label: 'Anexo A',      page: 5 },
+        { id: 'anexo-b',      label: 'Anexo B',      page: 8 },
+        { id: 'anexo-c',      label: 'Anexo C',      page: 9 },
+        { id: 'anexo-d',      label: 'Anexo D',      page: 10 },
+        { id: 'anexo-e',      label: 'Anexo E',      page: 12 },
+        { id: 'anexo-f',      label: 'Anexo F',      page: 14 },
+        { id: 'anexo-g',      label: 'Anexo G',      page: 15 },
         { id: 'cadena',       label: 'Cadena de Custodia', pattern: /CADENA\s+DE\s+CUSTODIA/i }
       ]
     },
@@ -101,8 +101,8 @@
         useBase64URL: true,
         renderHeaders: true,
         renderFooters: true,
-        ignoreLastRenderedPageBreak: true,
-        breakPages: false,
+        ignoreLastRenderedPageBreak: false,
+        breakPages: true,
         renderFootnotes: false,
         renderEndnotes: false
       });
@@ -128,19 +128,39 @@
 
   function assignAnchorIds() {
     if (!doc.anchors || !doc.anchors.length) return;
-    // Buscar elementos de texto en el documento renderizado
+
+    // Páginas renderizadas por docx-preview con breakPages: true
+    const pages = containerEl.querySelectorAll('.docx-wrapper > section, section.docx');
+
+    // Candidatos para búsqueda por texto
     const candidates = containerEl.querySelectorAll('p, h1, h2, h3, h4, h5, h6, td, th, div');
     const found = {};
-    candidates.forEach(el => {
-      const text = (el.textContent || '').trim();
-      if (!text || text.length > 200) return; // Solo títulos cortos
-      for (const a of doc.anchors) {
-        if (found[a.id]) continue; // Solo primera ocurrencia
-        if (a.pattern.test(text)) {
-          el.id = a.id;
-          el.setAttribute('data-anchor', a.id);
+
+    doc.anchors.forEach(a => {
+      if (found[a.id]) return;
+
+      // 1) Por número de página (1-indexed)
+      if (a.page) {
+        const idx = a.page - 1;
+        if (pages.length > idx) {
+          pages[idx].id = a.id;
+          pages[idx].setAttribute('data-anchor', a.id);
           found[a.id] = true;
-          break;
+        }
+        return;
+      }
+
+      // 2) Por patrón de texto
+      if (a.pattern) {
+        for (const el of candidates) {
+          const text = (el.textContent || '').trim();
+          if (!text || text.length > 200) continue;
+          if (a.pattern.test(text)) {
+            el.id = a.id;
+            el.setAttribute('data-anchor', a.id);
+            found[a.id] = true;
+            break;
+          }
         }
       }
     });
