@@ -11,35 +11,35 @@
       file: 'docs/IPH_delitos_blanco.docx',
       title: 'Archivo IPH',
       downloadName: 'IPH_delitos_blanco.docx',
-      // Mezcla: secciones 1-5 por texto, anexos por número de página
+      // Patrones case-sensitive: solo matchean los títulos en MAYÚSCULAS reales,
+      // no las menciones en minúsculas del checklist de la primera página.
       anchors: [
-        { id: 'seccion-1',    label: 'Sección 1',    pattern: /^SECCI[ÓO]N\s*1\b/i },
-        { id: 'seccion-2',    label: 'Sección 2',    pattern: /^SECCI[ÓO]N\s*2\b/i },
-        { id: 'seccion-3',    label: 'Sección 3',    pattern: /^SECCI[ÓO]N\s*3\b/i },
-        { id: 'seccion-4',    label: 'Sección 4',    pattern: /^SECCI[ÓO]N\s*4\b/i },
-        { id: 'seccion-5',    label: 'Sección 5',    pattern: /^SECCI[ÓO]N\s*5\b/i },
-        { id: 'anexo-a',      label: 'Anexo A',      page: 5 },
-        { id: 'anexo-b',      label: 'Anexo B',      page: 8 },
-        { id: 'anexo-c',      label: 'Anexo C',      page: 9 },
-        { id: 'anexo-d',      label: 'Anexo D',      page: 10 },
-        { id: 'anexo-e',      label: 'Anexo E',      page: 12 },
-        { id: 'anexo-f',      label: 'Anexo F',      page: 14 },
-        { id: 'anexo-g',      label: 'Anexo G',      page: 15 },
-        { id: 'cadena',       label: 'Cadena de Custodia', pattern: /CADENA\s+DE\s+CUSTODIA/i }
+        { id: 'seccion-1', label: 'Sección 1', pattern: /^SECCIÓN\s*1\./ },
+        { id: 'seccion-2', label: 'Sección 2', pattern: /^SECCIÓN\s*2\./ },
+        { id: 'seccion-3', label: 'Sección 3', pattern: /^SECCIÓN\s*3\./ },
+        { id: 'seccion-4', label: 'Sección 4', pattern: /^SECCIÓN\s*4\./ },
+        { id: 'seccion-5', label: 'Sección 5', pattern: /^SECCIÓN\s*5\./ },
+        { id: 'anexo-a',   label: 'Anexo A',   pattern: /^ANEXO\s*A\./ },
+        { id: 'anexo-b',   label: 'Anexo B',   pattern: /^ANEXO\s*B\./ },
+        { id: 'anexo-c',   label: 'Anexo C',   pattern: /^ANEXO\s*C\./ },
+        { id: 'anexo-d',   label: 'Anexo D',   pattern: /^ANEXO\s*D\./ },
+        { id: 'anexo-e',   label: 'Anexo E',   pattern: /^ANEXO\s*E\./ },
+        { id: 'anexo-f',   label: 'Anexo F',   pattern: /^ANEXO\s*F\./ },
+        { id: 'anexo-g',   label: 'Anexo G',   pattern: /^ANEXO\s*G\./ }
       ]
     },
     'iph-civica': {
       file: 'docs/IPH_Justicia_Civica_blanco.docx',
       title: 'IPH — Justicia Cívica',
       downloadName: 'IPH_Justicia_Civica_blanco.docx',
-      // Secciones 1-4 por texto, Anexos por número de página
+      // Patrones case-sensitive: solo matchean los títulos reales en MAYÚSCULAS
       anchors: [
-        { id: 'seccion-1', label: 'Sección 1', pattern: /^SECCI[ÓO]N\s*1\b/i },
-        { id: 'seccion-2', label: 'Sección 2', pattern: /^SECCI[ÓO]N\s*2\b/i },
-        { id: 'seccion-3', label: 'Sección 3', pattern: /^SECCI[ÓO]N\s*3\b/i },
-        { id: 'seccion-4', label: 'Sección 4', pattern: /^SECCI[ÓO]N\s*4\b/i },
-        { id: 'anexo-a',   label: 'Anexo A',   page: 3 },
-        { id: 'anexo-b',   label: 'Anexo B',   page: 4 }
+        { id: 'seccion-1', label: 'Sección 1', pattern: /^SECCIÓN\s*1\./ },
+        { id: 'seccion-2', label: 'Sección 2', pattern: /^SECCIÓN\s*2\./ },
+        { id: 'seccion-3', label: 'Sección 3', pattern: /^SECCIÓN\s*3\./ },
+        { id: 'seccion-4', label: 'Sección 4', pattern: /^SECCIÓN\s*4\./ },
+        { id: 'anexo-a',   label: 'Anexo A',   pattern: /^ANEXO\s*A\./ },
+        { id: 'anexo-b',   label: 'Anexo B',   pattern: /^ANEXO\s*B\./ }
       ]
     },
     'cadena': {
