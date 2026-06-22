@@ -459,6 +459,19 @@ a:hover { color: #67e8f9; }
 }
 .action-btn.is-informativo:hover { transform: none; border-color: var(--border); background: var(--bg-3); }
 
+/* Texto informativo en la guía interactiva (no es un botón) */
+.info-text {
+  padding: 18px 22px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
 /* ============ PDF GRID ============ */
 .pdf-grid {
   display: grid;

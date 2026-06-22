@@ -111,7 +111,18 @@
       const icon = a.icon || 'arrow';
       const iconSvg = ICONS[icon] || ICONS.arrow;
 
-      // Clasificar tipo de acción
+      // ¿Es solo texto informativo? (no navega a ningún nodo y no es ACCION)
+      const isInfo = c === 'INFORMATIVO'
+        || c === 'INICIO'
+        || (!c.startsWith('ACCION:') && !nodeByClave[c]);
+
+      if (isInfo) {
+        // Renderiza como texto plano, sin botón ni ícono
+        html += `<div class="info-text">${escapeHtml(desc)}</div>`;
+        return;
+      }
+
+      // Clasificar tipo de acción (botón clickable)
       let cls = 'action-btn';
       let handler = '';
 
@@ -119,9 +130,6 @@
         cls += ' is-action';
         const actKey = c.split(':')[1];
         handler = `window.PG.openAction('${actKey}')`;
-      } else if (c === 'INFORMATIVO') {
-        cls += ' is-informativo';
-        handler = '';
       } else if (icon === 'check') {
         cls += ' is-check';
         handler = `window.PG.go('${c}')`;
@@ -133,10 +141,9 @@
       }
 
       const onclickAttr = handler ? `onclick="${handler}"` : '';
-      const role = handler ? '' : 'aria-disabled="true"';
 
       html += `
-        <button class="${cls}" ${onclickAttr} ${role}>
+        <button class="${cls}" ${onclickAttr}>
           <span class="action-icon">${iconSvg}</span>
           <span>${escapeHtml(desc)}</span>
         </button>`;
