@@ -32,13 +32,14 @@
       file: 'docs/IPH_Justicia_Civica_blanco.docx',
       title: 'IPH — Justicia Cívica',
       downloadName: 'IPH_Justicia_Civica_blanco.docx',
+      // Secciones 1-4 por texto, Anexos por número de página
       anchors: [
         { id: 'seccion-1', label: 'Sección 1', pattern: /^SECCI[ÓO]N\s*1\b/i },
         { id: 'seccion-2', label: 'Sección 2', pattern: /^SECCI[ÓO]N\s*2\b/i },
         { id: 'seccion-3', label: 'Sección 3', pattern: /^SECCI[ÓO]N\s*3\b/i },
         { id: 'seccion-4', label: 'Sección 4', pattern: /^SECCI[ÓO]N\s*4\b/i },
-        { id: 'anexo-a',   label: 'Anexo A',   pattern: /^ANEXO\s*A\b/i },
-        { id: 'anexo-b',   label: 'Anexo B',   pattern: /^ANEXO\s*B\b/i }
+        { id: 'anexo-a',   label: 'Anexo A',   page: 3 },
+        { id: 'anexo-b',   label: 'Anexo B',   page: 4 }
       ]
     },
     'cadena': {
