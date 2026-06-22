@@ -30,7 +30,7 @@ window.RECURSOS = [
       {
         title: 'IPH — Hecho probablemente delictivo',
         items: [
-          { title: 'Archivo IPH', kind: 'download', file: 'docs/IPH_para_llenar.docx', filename: 'IPH_para_llenar.docx' },
+          { title: 'Archivo IPH', kind: 'download', file: 'docs/IPH_delitos_blanco.docx', filename: 'IPH_delitos_blanco.docx' },
           { title: 'Presentación del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
         ],
         sections: [

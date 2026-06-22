@@ -8,9 +8,9 @@
   // Catálogo de documentos
   const DOCS = {
     'iph': {
-      file: 'docs/IPH_para_llenar.docx',
+      file: 'docs/IPH_delitos_blanco.docx',
       title: 'Archivo IPH',
-      downloadName: 'IPH_para_llenar.docx',
+      downloadName: 'IPH_delitos_blanco.docx',
       // Mezcla: secciones 1-5 por texto, anexos por número de página
       anchors: [
         { id: 'seccion-1',    label: 'Sección 1',    pattern: /^SECCI[ÓO]N\s*1\b/i },
