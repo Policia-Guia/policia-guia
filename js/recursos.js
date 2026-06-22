@@ -90,10 +90,23 @@ window.RECURSOS = [
     ]
   },
 
-  /* ----------- 5. Ordenamientos Legales Nacionales ----------- */
+  /* ----------- 5. Guía de Llenado del IPH ----------- */
+  {
+    id: 'guia-llenado-iph',
+    num: 5,
+    title: 'Guía de Llenado del Informe Policial Homologado',
+    desc: 'Guía oficial para el llenado del IPH en hecho probablemente delictivo. Solo lectura.',
+    icon: 'book',
+    items: [
+      { title: 'Guía de Llenado del Informe Policial Homologado', kind: 'external',
+        href: 'https://www.gob.mx/cms/uploads/attachment/file/394021/Gu_a_IPH_Hecho_Probablemente_Delictivo.pdf' }
+    ]
+  },
+
+  /* ----------- 6. Ordenamientos Legales Nacionales ----------- */
   {
     id: 'ordenamientos',
-    num: 5,
+    num: 6,
     title: 'Ordenamientos Legales Nacionales',
     desc: 'Marco normativo nacional aplicable a la actuación policial.',
     icon: 'scale',
@@ -120,10 +133,10 @@ window.RECURSOS = [
     ]
   },
 
-  /* ----------- 6. Instrumentos Internacionales ----------- */
+  /* ----------- 7. Instrumentos Internacionales ----------- */
   {
     id: 'internacionales',
-    num: 6,
+    num: 7,
     title: 'Instrumentos Internacionales',
     desc: 'Tratados, convenciones y declaraciones internacionales aplicables.',
     icon: 'globe',
@@ -143,10 +156,10 @@ window.RECURSOS = [
     ]
   },
 
-  /* ----------- 7. Leyes Locales (Jalisco / Tonalá) ----------- */
+  /* ----------- 8. Leyes Locales (Jalisco / Tonalá) ----------- */
   {
     id: 'locales',
-    num: 7,
+    num: 8,
     title: 'Leyes Locales — Jalisco / Tonalá',
     desc: 'Marco normativo estatal y municipal aplicable.',
     icon: 'pin',
