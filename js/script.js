@@ -335,8 +335,9 @@
       <div class="rec-sections">
         ${sections.map(s => {
           const titleAttr = s.note ? `title="${escapeHtml(s.note)}"` : '';
-          if (s.doc && s.anchor) {
-            const href = `viewer.html?doc=${encodeURIComponent(s.doc)}#${encodeURIComponent(s.anchor)}`;
+          if (s.doc) {
+            const hash = s.anchor ? '#' + encodeURIComponent(s.anchor) : '';
+            const href = `viewer.html?doc=${encodeURIComponent(s.doc)}${hash}`;
             return `<a href="${href}" class="rec-chip rec-chip-${s.kind} rec-chip-link" ${titleAttr}>${escapeHtml(s.label)} →</a>`;
           }
           return `<span class="rec-chip rec-chip-${s.kind}" ${titleAttr}>${escapeHtml(s.label)}</span>`;

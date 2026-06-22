@@ -46,7 +46,7 @@ window.RECURSOS = [
           { label: 'Anexo E', kind: 'adicional', doc: 'iph', anchor: 'anexo-e' },
           { label: 'Anexo F', kind: 'mp', note: 'que pide MP', doc: 'iph', anchor: 'anexo-f' },
           { label: 'Anexo G', kind: 'mp', doc: 'iph', anchor: 'anexo-g' },
-          { label: 'Cadena de Custodia', kind: 'adicional', doc: 'iph', anchor: 'cadena' }
+          { label: 'Cadena de Custodia', kind: 'adicional', doc: 'cadena-blanco' }
         ]
       },
       {

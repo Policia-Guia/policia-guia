@@ -46,6 +46,12 @@
       title: 'Registro de Cadena de Custodia',
       downloadName: 'Registro_Cadena_Custodia.docx',
       anchors: []
+    },
+    'cadena-blanco': {
+      file: 'docs/CADENA_DE_CUSTODIA_blanco.docx',
+      title: 'Cadena de Custodia',
+      downloadName: 'CADENA_DE_CUSTODIA_blanco.docx',
+      anchors: []
     }
   };
 
