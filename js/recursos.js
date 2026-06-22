@@ -78,15 +78,15 @@ window.RECURSOS = [
     ]
   },
 
-  /* ----------- 4. Guía de llenado del IPH ----------- */
+  /* ----------- 4. Guía de Bolsillo ----------- */
   {
     id: 'guia-iph',
     num: 4,
-    title: 'Guía de llenado del IPH',
-    desc: 'Guía para el llenado del Informe Policial Homologado en hecho probablemente delictivo. Solo lectura.',
+    title: 'Guía de Bolsillo Para el Policía en el Sistema Penal Acusatorio',
+    desc: 'Guía de consulta rápida para el policía en el Sistema Penal Acusatorio. Solo lectura.',
     icon: 'lightbulb',
     items: [
-      { title: 'Guía del IPH para hecho probablemente delictivo', kind: 'pdf', file: 'guia.pdf' }
+      { title: 'Guía de Bolsillo Para el Policía en el Sistema Penal Acusatorio', kind: 'pdf', file: 'guia.pdf' }
     ]
   },
 
