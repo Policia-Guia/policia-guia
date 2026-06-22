@@ -29,9 +29,9 @@
       ]
     },
     'iph-civica': {
-      file: 'docs/IPH_Justicia_Civica.docx',
+      file: 'docs/IPH_Justicia_Civica_blanco.docx',
       title: 'IPH — Justicia Cívica',
-      downloadName: 'IPH_Justicia_Civica.docx',
+      downloadName: 'IPH_Justicia_Civica_blanco.docx',
       anchors: [
         { id: 'seccion-1', label: 'Sección 1', pattern: /^SECCI[ÓO]N\s*1\b/i },
         { id: 'seccion-2', label: 'Sección 2', pattern: /^SECCI[ÓO]N\s*2\b/i },

@@ -52,7 +52,7 @@ window.RECURSOS = [
       {
         title: 'IPH — Justicia Cívica',
         items: [
-          { title: 'Archivo IPH Justicia Cívica', kind: 'download', file: 'docs/IPH_Justicia_Civica.docx', filename: 'IPH_Justicia_Civica.docx' }
+          { title: 'Archivo IPH Justicia Cívica', kind: 'download', file: 'docs/IPH_Justicia_Civica_blanco.docx', filename: 'IPH_Justicia_Civica_blanco.docx' }
         ],
         sections: [
           { label: 'Sección 1', kind: 'obligatoria', doc: 'iph-civica', anchor: 'seccion-1' },
