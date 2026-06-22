@@ -86,27 +86,16 @@ window.RECURSOS = [
     desc: 'Guía de consulta rápida para el policía en el Sistema Penal Acusatorio. Solo lectura.',
     icon: 'lightbulb',
     items: [
-      { title: 'Guía de Bolsillo Para el Policía en el Sistema Penal Acusatorio', kind: 'pdf', file: 'guia.pdf' }
-    ]
-  },
-
-  /* ----------- 5. Guía de Llenado del IPH ----------- */
-  {
-    id: 'guia-llenado-iph',
-    num: 5,
-    title: 'Guía de Llenado del Informe Policial Homologado',
-    desc: 'Guía oficial para el llenado del IPH en hecho probablemente delictivo. Solo lectura.',
-    icon: 'book',
-    items: [
+      { title: 'Guía de Bolsillo Para el Policía en el Sistema Penal Acusatorio', kind: 'pdf', file: 'guia.pdf' },
       { title: 'Guía de Llenado del Informe Policial Homologado', kind: 'external',
         href: 'https://www.gob.mx/cms/uploads/attachment/file/394021/Gu_a_IPH_Hecho_Probablemente_Delictivo.pdf' }
     ]
   },
 
-  /* ----------- 6. Ordenamientos Legales Nacionales ----------- */
+  /* ----------- 5. Ordenamientos Legales Nacionales ----------- */
   {
     id: 'ordenamientos',
-    num: 6,
+    num: 5,
     title: 'Ordenamientos Legales Nacionales',
     desc: 'Marco normativo nacional aplicable a la actuación policial.',
     icon: 'scale',
@@ -133,10 +122,10 @@ window.RECURSOS = [
     ]
   },
 
-  /* ----------- 7. Instrumentos Internacionales ----------- */
+  /* ----------- 6. Instrumentos Internacionales ----------- */
   {
     id: 'internacionales',
-    num: 7,
+    num: 6,
     title: 'Instrumentos Internacionales',
     desc: 'Tratados, convenciones y declaraciones internacionales aplicables.',
     icon: 'globe',
@@ -156,10 +145,10 @@ window.RECURSOS = [
     ]
   },
 
-  /* ----------- 8. Leyes Locales (Jalisco / Tonalá) ----------- */
+  /* ----------- 7. Leyes Locales (Jalisco / Tonalá) ----------- */
   {
     id: 'locales',
-    num: 8,
+    num: 7,
     title: 'Leyes Locales — Jalisco / Tonalá',
     desc: 'Marco normativo estatal y municipal aplicable.',
     icon: 'pin',
