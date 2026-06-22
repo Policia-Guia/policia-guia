@@ -31,6 +31,7 @@ window.RECURSOS = [
         title: 'IPH — Hecho probablemente delictivo',
         items: [
           { title: 'Archivo IPH', kind: 'download', file: 'docs/IPH_delitos_blanco.docx', filename: 'IPH_delitos_blanco.docx' },
+          { title: 'Registro de Cadena de Custodia', kind: 'download', file: 'docs/CADENA_DE_CUSTODIA_blanco.docx', filename: 'CADENA_DE_CUSTODIA_blanco.docx' },
           { title: 'Presentación del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
         ],
         sections: [
@@ -160,23 +161,6 @@ window.RECURSOS = [
       { title: 'Código Penal del Estado de Jalisco', kind: 'external',
         href: 'https://transparencia.info.jalisco.gob.mx/sites/default/files/Codigo%20Penal%20para%20el%20Estado%20Libre%20y%20Soberano%20de%20Jalisco.pdf' },
       { title: 'Reglamento de Policía y Buen Gobierno del municipio de Tonalá, Jalisco', kind: 'pdf', file: 'reglamento.pdf' }
-    ]
-  },
-
-  /* ----------- 8. Protocolos Nacionales ----------- */
-  {
-    id: 'protocolos',
-    num: 8,
-    title: 'Protocolos Nacionales',
-    desc: 'Protocolos de actuación y guías nacionales de procedimiento.',
-    icon: 'shield',
-    items: [
-      { title: 'Registro de Cadena de Custodia', kind: 'download', file: 'docs/Registro_Cadena_Custodia.docx', filename: 'Registro_Cadena_Custodia.docx' },
-      { title: 'Protocolo Nacional de Actuación — Traslado', kind: 'external',
-        href: 'https://www.gob.mx/sspc/documentos/protocolos-nacionales-de-actuacion' },
-      { title: 'Protocolo Nacional de Actuación — Policía con Capacidades para Procesar Lugar de la Intervención', kind: 'external',
-        href: 'https://www.gob.mx/sspc/documentos/protocolos-nacionales-de-actuacion' },
-      { title: 'Guía Nacional de Cadena de Custodia', kind: 'pdf', file: 'custodia.pdf' }
     ]
   }
 ];
