@@ -32,7 +32,8 @@ window.RECURSOS = [
         items: [
           { title: 'Archivo IPH', kind: 'download', file: 'docs/IPH_delitos_blanco.docx', filename: 'IPH_delitos_blanco.docx' },
           { title: 'Registro de Cadena de Custodia', kind: 'download', file: 'docs/CADENA_DE_CUSTODIA_blanco.docx', filename: 'CADENA_DE_CUSTODIA_blanco.docx' },
-          { title: 'Presentación del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
+          { title: 'Guía de Llenado del Informe Policial Homologado', kind: 'external',
+            href: 'https://www.gob.mx/cms/uploads/attachment/file/394021/Gu_a_IPH_Hecho_Probablemente_Delictivo.pdf' }
         ],
         sections: [
           { label: 'Sección 1', kind: 'obligatoria', doc: 'iph', anchor: 'seccion-1' },
