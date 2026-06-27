@@ -32,6 +32,7 @@ window.RECURSOS = [
         items: [
           { title: 'Archivo IPH', kind: 'download', file: 'docs/IPH_delitos_blanco.docx', filename: 'IPH_delitos_blanco.docx' },
           { title: 'Registro de Cadena de Custodia', kind: 'download', file: 'docs/CADENA_DE_CUSTODIA_blanco.docx', filename: 'CADENA_DE_CUSTODIA_blanco.docx' },
+          { title: 'Vista previa de Cadena de Custodia', kind: 'viewer', viewerDoc: 'cadena-blanco' },
           { title: 'Presentación del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
         ],
         sections: [

@@ -57,7 +57,8 @@
     globe:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 010 18a14 14 0 010-18z"/></svg>',
     pin:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7-7-12a7 7 0 0114 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>',
     shield:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>',
-    pencil:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6-12 12H2v-6z"/><path d="M14 4l3-3 6 6-3 3"/></svg>'
+    pencil:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6-12 12H2v-6z"/><path d="M14 4l3-3 6 6-3 3"/></svg>',
+    eye:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
   };
 
   // ============================================================
@@ -313,6 +314,20 @@
         <div class="rec-item">
           <a href="${it.file}" download="${it.filename || ''}" class="rec-item-main rec-item-editor">
             <span class="rec-item-icon">${ICONS.download}</span>
+            <span class="rec-item-text">
+              <strong>${escapeHtml(it.title)}</strong>
+              ${noteHtml}
+            </span>
+            <span class="rec-item-go">${ICONS.arrow}</span>
+          </a>
+        </div>`;
+    } else if (it.kind === 'viewer') {
+      const hash = it.anchor ? '#' + encodeURIComponent(it.anchor) : '';
+      const href = `viewer.html?doc=${encodeURIComponent(it.viewerDoc)}${hash}`;
+      return `
+        <div class="rec-item">
+          <a href="${href}" class="rec-item-main rec-item-viewer">
+            <span class="rec-item-icon">${ICONS.eye}</span>
             <span class="rec-item-text">
               <strong>${escapeHtml(it.title)}</strong>
               ${noteHtml}
