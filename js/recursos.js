@@ -88,9 +88,7 @@ window.RECURSOS = [
     desc: 'Guía de consulta rápida para el policía en el Sistema Penal Acusatorio. Solo lectura.',
     icon: 'lightbulb',
     items: [
-      { title: 'Guía de Bolsillo Para el Policía en el Sistema Penal Acusatorio', kind: 'pdf', file: 'guia.pdf' },
-      { title: 'Guía de Llenado del Informe Policial Homologado', kind: 'external',
-        href: 'https://www.gob.mx/cms/uploads/attachment/file/394021/Gu_a_IPH_Hecho_Probablemente_Delictivo.pdf' }
+      { title: 'Guía de Bolsillo Para el Policía en el Sistema Penal Acusatorio', kind: 'pdf', file: 'guia.pdf' }
     ]
   },
 
