@@ -80,12 +80,12 @@ window.RECURSOS = [
     ]
   },
 
-  /* ----------- 4. Guía de Bolsillo ----------- */
+  /* ----------- 4. Guías para los Policías ----------- */
   {
     id: 'guia-iph',
     num: 4,
-    title: 'Guía de Bolsillo Para el Policía en el Sistema Penal Acusatorio',
-    desc: 'Guía de consulta rápida para el policía en el Sistema Penal Acusatorio. Solo lectura.',
+    title: 'Guías para los Policías',
+    desc: 'Guías de consulta para el actuar policial. Solo lectura.',
     icon: 'lightbulb',
     items: [
       { title: 'Guía de Bolsillo Para el Policía en el Sistema Penal Acusatorio', kind: 'pdf', file: 'guia.pdf' },
