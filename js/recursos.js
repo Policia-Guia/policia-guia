@@ -32,7 +32,6 @@ window.RECURSOS = [
         items: [
           { title: 'Archivo IPH', kind: 'download', file: 'docs/IPH_delitos_blanco.docx', filename: 'IPH_delitos_blanco.docx' },
           { title: 'Registro de Cadena de Custodia', kind: 'download', file: 'docs/CADENA_DE_CUSTODIA_blanco.docx', filename: 'CADENA_DE_CUSTODIA_blanco.docx' },
-          { title: 'Vista previa de Cadena de Custodia', kind: 'viewer', viewerDoc: 'cadena-blanco' },
           { title: 'Presentación del IPH', kind: 'pdf', file: 'IPH_ppt.pdf' }
         ],
         sections: [
@@ -47,7 +46,8 @@ window.RECURSOS = [
           { label: 'Anexo D', kind: 'adicional', doc: 'iph', anchor: 'anexo-d' },
           { label: 'Anexo E', kind: 'adicional', doc: 'iph', anchor: 'anexo-e' },
           { label: 'Anexo F', kind: 'mp', note: 'que pide MP', doc: 'iph', anchor: 'anexo-f' },
-          { label: 'Anexo G', kind: 'mp', doc: 'iph', anchor: 'anexo-g' }
+          { label: 'Anexo G', kind: 'mp', doc: 'iph', anchor: 'anexo-g' },
+          { label: 'Cadena de Custodia', kind: 'adicional', doc: 'cadena-blanco' }
         ]
       },
       {
